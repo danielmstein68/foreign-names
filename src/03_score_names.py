@@ -60,6 +60,8 @@ def main() -> None:
     # 1. Surname from the full name, same parser for every source.
     parsed = df["candidate_name"].fillna("").map(parse_name)
     df["first_name"], df["surname"] = parsed.str[0], parsed.str[1]
+    # A one-letter "surname" means the name had none ("kathy l"); leave it unscored.
+    df.loc[df["surname"].str.len() < 2, "surname"] = ""
     log_decision("score", "Surnames parsed from the full candidate name with src/names.py for all sources, "
                  "instead of using HKS's own lastname column.",
                  "Same rule everywhere. Where the two disagree (0.7% of local rows) ours is usually right: "

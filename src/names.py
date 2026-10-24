@@ -16,7 +16,7 @@ import pandas as pd
 
 # Tokens that are not part of anyone's surname.
 SUFFIXES = {"JR", "SR", "II", "III", "IV", "V", "ESQ", "MD", "PHD", "DDS", "CPA"}
-TITLES = {"DR", "MR", "MRS", "MS", "HON", "REV", "SEN", "REP", "JUDGE", "SHERIFF"}
+TITLES = {"DR", "MR", "MRS", "MS", "HON", "REV", "SEN", "REP"}  # not JUDGE: it is also a surname
 
 # Lower-case particles that belong to the surname that follows them
 # ("Van Buren", "de la Cruz", "St. John").
@@ -51,7 +51,9 @@ def parse_name(raw: str) -> tuple[str, str]:
     2. If there is a comma, the part before the first comma is the surname
        ("LAST, FIRST"), unless that part is the whole name and the comma only
        separates a suffix ("John Smith, Jr.").
-    3. Otherwise the surname is the last word plus any particles before it
+    3. If the name ends in a lone initial ("gillespie douglas c."), it is in
+       LAST FIRST I order, so the first word is the surname.
+    4. Otherwise the surname is the last word plus any particles before it
        ("Maria de la Cruz" -> "DE LA CRUZ").
     Suffixes (Jr, Sr, II, III...) and titles (Dr, Hon...) are dropped.
     """
@@ -76,6 +78,10 @@ def parse_name(raw: str) -> tuple[str, str]:
         return "", ""
     if len(tokens) == 1:
         return "", tokens[0]
+    # A lone initial at the end means "LAST FIRST I" order with no comma
+    # ("gillespie douglas c."), since a single letter cannot be a surname.
+    if len(tokens) >= 3 and len(tokens[-1]) == 1:
+        return tokens[1], tokens[0]
 
     # Walk left from the last word, absorbing particles into the surname.
     i = len(tokens) - 1
