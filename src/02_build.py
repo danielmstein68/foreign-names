@@ -30,7 +30,8 @@ from readers import read_hks, read_mit_house, read_mit_senate
 
 # Rows that are vote totals, not people.
 PLACEHOLDER = (r"^(OTHER|OTHERS|ALL OTHERS|OTHER WRITE-INS|MISCELLANEOUS|INDEPENDENT|PRO-LIFE"
-               r"|BLANK.*|SCATTER.*|VOID.*|UNDER ?VOTES?|OVER ?VOTES?|NONE OF THESE CANDIDATES)$")
+               r"|BLANK.*|SCATTER.*|UNIDENTIFIED.*|WRITE-? ?INS?|VOID.*|UNDER ?VOTES?|OVER ?VOTES?"
+               r"|NONE OF THESE CANDIDATES)$")
 
 DEM_LABELS = {"DEMOCRAT", "DEMOCRATIC-FARMER-LABOR", "DEMOCRATIC-FARM-LABOR",
               "DEMOCRATIC-NONPARTISAN LEAGUE", "DEMOCRATIC-NPL"}
@@ -186,6 +187,10 @@ def finish_federal(df: pd.DataFrame, lookback: int) -> pd.DataFrame:
 
 def build_local() -> pd.DataFrame:
     d = read_hks()
+    ph = d["full_name"].fillna("").str.upper().str.match(PLACEHOLDER)
+    log_decision("build/local", f"Dropped {ph.sum():,} placeholder rows ('scattering', 'write-ins'...).",
+                 "Same rule as House and Senate; they are vote totals, not candidates.")
+    d = d[~ph]
     log_decision("build/local", f"Office types {sorted(NONPARTISAN_OFFICES)} coded nonpartisan; County Legislature, "
                  "County Executive, Sheriff and Prosecutor coded partisan.",
                  "HKS has no ballot-type flag (checked readme). Office type is the agreed proxy; it is wrong "

@@ -1,0 +1,16 @@
+DECISION: - **2026-10-24 · score:** Surnames parsed from the full candidate name with src/names.py for all sources, instead of using HKS's own lastname column. *Why:* Same rule everywhere. Where the two disagree (0.7% of local rows) ours is usually right: HKS splits 'van Bramer' -> 'bramer', 'St Lawrence' -> 'lawrence', and has junk like 'name)'.
+Census match rule by source (share of candidates):
+census_match_rule  first_part   full  last_part  unmatched
+source                                                    
+house                   0.006  0.908      0.000      0.086
+local                   0.012  0.902      0.001      0.085
+senate                  0.004  0.899      0.001      0.097
+
+ethnicolr abstained: 7 candidates
+Fully scored share by source:
+source
+house     0.914
+local     0.915
+senate    0.903
+
+Saved 157,888 rows to /home/user/foreign-names/data/processed/candidates_scored.parquet

@@ -5,3 +5,4 @@ statsmodels
 pyfixest
 ethnicolr==2.0.0
 pytest
+tabulate

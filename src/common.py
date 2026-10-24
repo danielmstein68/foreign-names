@@ -17,8 +17,15 @@ DECISION_LOG = DOCS / "decision_log.md"
 
 
 def log_decision(step: str, decision: str, reason: str) -> None:
-    """Append one decision to the log file and echo it to the screen."""
-    line = f"- **{date.today()} · {step}:** {decision} *Why:* {reason}\n"
-    with open(DECISION_LOG, "a", encoding="utf-8") as f:
-        f.write(line)
+    """Append one decision to the log file and echo it to the screen.
+
+    If the same decision is already in the log (from an earlier run of the
+    same script), it is not written again.
+    """
+    body = f"{step}:** {decision} *Why:* {reason}"
+    line = f"- **{date.today()} · {body}\n"
+    existing = DECISION_LOG.read_text(encoding="utf-8") if DECISION_LOG.exists() else ""
+    if body not in existing:
+        with open(DECISION_LOG, "a", encoding="utf-8") as f:
+            f.write(line)
     print("DECISION:", line.strip())
