@@ -10,6 +10,7 @@ So we normalise the same way before matching.
 """
 
 import re
+import unicodedata
 
 import pandas as pd
 
@@ -21,6 +22,11 @@ TITLES = {"DR", "MR", "MRS", "MS", "HON", "REV", "SEN", "REP", "JUDGE", "SHERIFF
 # ("Van Buren", "de la Cruz", "St. John").
 PARTICLES = {"DE", "DA", "DEL", "DELA", "DELLA", "DI", "DO", "DOS", "DU",
              "LA", "LE", "VAN", "VON", "DER", "DEN", "TEN", "ST", "SAINT", "MAC", "BIN", "AL", "EL"}
+
+
+def strip_accents(text: str) -> str:
+    """GARCÍA -> GARCIA, MUÑOZ -> MUNOZ (the Census file has no accents)."""
+    return unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
 
 
 def _tokens(text: str) -> list[str]:
@@ -38,7 +44,10 @@ def parse_name(raw: str) -> tuple[str, str]:
     """Return (first_name, surname) from one raw candidate-name string.
 
     Rules, in order:
-    1. Remove nicknames in quotes or parentheses: John "Jack" Smith -> John Smith.
+    0. Remove accents: García -> Garcia.
+    1. Remove nicknames in quotes or parentheses: John "Jack" Smith -> John Smith,
+       James 'Jimmy' Van Bramer -> James Van Bramer (apostrophes inside a
+       word, as in O'Brien, are kept).
     2. If there is a comma, the part before the first comma is the surname
        ("LAST, FIRST"), unless that part is the whole name and the comma only
        separates a suffix ("John Smith, Jr.").
@@ -49,6 +58,8 @@ def parse_name(raw: str) -> tuple[str, str]:
     if not isinstance(raw, str) or not raw.strip():
         return "", ""
     text = re.sub(r'"[^"]*"|\([^)]*\)|“[^”]*”', " ", raw)
+    text = re.sub(r"(?<!\w)'[^']+'(?!\w)", " ", text)
+    text = strip_accents(text)
 
     if "," in text:
         parts = [p.strip() for p in text.split(",") if p.strip()]
@@ -75,7 +86,7 @@ def parse_name(raw: str) -> tuple[str, str]:
 
 def census_key(surname: str) -> str:
     """Normalise a surname the way the Census file does: letters A-Z only."""
-    return re.sub(r"[^A-Z]", "", surname.upper())
+    return re.sub(r"[^A-Z]", "", strip_accents(surname).upper())
 
 
 def match_candidates(surname: str) -> list[tuple[str, str]]:

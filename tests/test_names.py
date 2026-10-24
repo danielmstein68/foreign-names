@@ -22,6 +22,11 @@ from names import match_to_census, parse_name  # noqa: E402
     ('Robert "Bob" O\'Brien', "ROBERT", "O'BRIEN"),
     ("Dr. Jane Q. Public", "JANE", "PUBLIC"),
     ("Madonna", "", "MADONNA"),
+    ("rosa garcía", "ROSA", "GARCIA"),
+    ("james 'jimmy' van bramer", "JAMES", "VAN BRAMER"),
+    ("pat o'brien", "PAT", "O'BRIEN"),
+    ("joey acuna, jr.", "JOEY", "ACUNA"),
+    ("richard de la paz,", "RICHARD", "DE LA PAZ"),
     ("", "", ""),
 ])
 def test_parse_name(raw, first, last):
