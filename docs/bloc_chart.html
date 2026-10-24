@@ -1,0 +1,200 @@
+<title>Names and Local Voters</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: headline, the 2×2 chart at full column width, then the explanation. Same identity as the study's other pages. */
+:root {
+  --bg: #f3f5f2;
+  --fg: #18212c;
+  --muted: #5b6673;
+  --line: #d9dfdc;
+  --zero: #8b959f;
+  --c-black: #6b4fa6;
+  --c-asian: #1f8a8a;
+  --c-german: #24548a;
+  --c-hispanic: #c0661f;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171d; --fg: #e4e9ee; --muted: #9aa6b2; --line: #28323c; --zero: #6d7884;
+    --c-black: #ab95e6; --c-asian: #5cc8c8; --c-german: #7fb0e3; --c-hispanic: #eb9a55;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171d; --fg: #e4e9ee; --muted: #9aa6b2; --line: #28323c; --zero: #6d7884;
+  --c-black: #ab95e6; --c-asian: #5cc8c8; --c-german: #7fb0e3; --c-hispanic: #eb9a55;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 36px 52px;
+  display: grid; gap: 22px;
+}
+h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.6rem, 4.5vw, 2.3rem); line-height: 1.15; text-wrap: balance; margin: 0; }
+.sub { color: var(--muted); margin: 0; max-width: 62ch; }
+p { margin: 0; max-width: 66ch; }
+figure { margin: 0; display: grid; gap: 10px; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.chart { display: block; width: 100%; min-width: 520px; height: auto; }
+figcaption { font-size: 0.85rem; color: var(--muted); max-width: 70ch; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.82rem; color: var(--muted); }
+.key span { display: inline-flex; align-items: center; gap: 8px; }
+.sw { display: inline-block; width: 26px; height: 0; border-top: 2.5px solid var(--muted); }
+.sw.dash { border-top-style: dashed; }
+.sw.band { height: 10px; border: 0; background: color-mix(in srgb, var(--muted) 22%, transparent); }
+
+/* Chart styles */
+.ptitle { font-family: var(--font-body); font-size: 14px; font-weight: 600; fill: var(--fg); }
+.tick { font-family: var(--font-data); font-size: 10.5px; fill: var(--muted); }
+.axis { font-family: var(--font-body); font-size: 11px; fill: var(--muted); }
+.grid { stroke: var(--line); stroke-width: 1; }
+.zero { stroke: var(--zero); stroke-width: 1.3; }
+polygon.band { stroke: none; fill-opacity: 0.16; }
+.line { fill: none; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.line.dashed { stroke-width: 2; stroke-dasharray: 5 5; }
+.val { font-family: var(--font-data); font-size: 12px; font-weight: 500; }
+.black { stroke: var(--c-black); fill: var(--c-black); }
+.asian { stroke: var(--c-asian); fill: var(--c-asian); }
+.german { stroke: var(--c-german); fill: var(--c-german); }
+.hispanic { stroke: var(--c-hispanic); fill: var(--c-hispanic); }
+.line.black, .line.asian, .line.german, .line.hispanic { fill: none; }
+.val.black, .val.asian, .val.german, .val.hispanic { stroke: none; }
+</style>
+
+<div class="page">
+  <h1>Surnames lose votes where few voters share them, and gain where many do</h1>
+  <p class="sub">Local elections. Points of vote share compared with a white, Anglo-named opponent in the same race.</p>
+
+  <figure>
+    <div class="scroll">
+<svg viewBox="0 0 680 516" role="img" aria-label="Four panels. In local races, each surname group does worse than a white Anglo-named opponent where few residents share its background and better where many do. Black-coded surnames: −4.4 points at 0%, +3.4 at 50%. Asian surnames: −2.4 points at 0%, +3.5 at 50%. German surnames: −2.6 points at 0%, +2.2 at 50%. Hispanic surnames: −1.8 points at 0%, +1.2 at 50%." class="chart">
+<g transform="translate(0,0)">
+<text x="52" y="18" class="ptitle">Black-coded surnames</text>
+<line x1="52" x2="312" y1="214.0" y2="214.0" class="grid"/>
+<text x="44" y="218.0" class="tick" text-anchor="end">−8</text>
+<line x1="52" x2="312" y1="171.6" y2="171.6" class="grid"/>
+<text x="44" y="175.6" class="tick" text-anchor="end">−4</text>
+<line x1="52" x2="312" y1="86.9" y2="86.9" class="grid"/>
+<text x="44" y="90.9" class="tick" text-anchor="end">+4</text>
+<line x1="52" x2="312" y1="44.6" y2="44.6" class="grid"/>
+<text x="44" y="48.6" class="tick" text-anchor="end">+8</text>
+<line x1="52" x2="312" y1="129.3" y2="129.3" class="zero"/>
+<text x="44" y="133.3" class="tick" text-anchor="end">0</text>
+<text x="52.0" y="232" class="tick" text-anchor="middle">0%</text>
+<text x="104.0" y="232" class="tick" text-anchor="middle">10%</text>
+<text x="156.0" y="232" class="tick" text-anchor="middle">20%</text>
+<text x="208.0" y="232" class="tick" text-anchor="middle">30%</text>
+<text x="260.0" y="232" class="tick" text-anchor="middle">40%</text>
+<text x="312.0" y="232" class="tick" text-anchor="middle">50%</text>
+<polygon points="52.0,148.2 57.2,147.5 62.4,146.7 67.6,145.9 72.8,145.1 78.0,144.2 83.2,143.3 88.4,142.3 93.6,141.3 98.8,140.2 104.0,139.0 109.2,137.7 114.4,136.4 119.6,135.0 124.8,133.5 130.0,131.9 135.2,130.2 140.4,128.5 145.6,126.6 150.8,124.7 156.0,122.6 161.2,120.5 166.4,118.4 171.6,116.1 176.8,113.8 182.0,111.5 187.2,109.0 192.4,106.6 197.6,104.1 202.8,101.5 208.0,99.0 213.2,96.4 218.4,93.7 223.6,91.0 228.8,88.4 234.0,85.7 239.2,82.9 244.4,80.2 249.6,77.4 254.8,74.7 260.0,71.9 265.2,69.1 270.4,66.3 275.6,63.5 280.8,60.6 286.0,57.8 291.2,55.0 296.4,52.1 301.6,49.3 306.8,46.4 312.0,43.5 312.0,142.5 306.8,142.9 301.6,143.4 296.4,143.9 291.2,144.3 286.0,144.8 280.8,145.3 275.6,145.8 270.4,146.3 265.2,146.8 260.0,147.3 254.8,147.8 249.6,148.4 244.4,148.9 239.2,149.5 234.0,150.1 228.8,150.7 223.6,151.4 218.4,152.0 213.2,152.7 208.0,153.4 202.8,154.2 197.6,154.9 192.4,155.7 187.2,156.6 182.0,157.5 176.8,158.5 171.6,159.5 166.4,160.5 161.2,161.7 156.0,162.9 150.8,164.2 145.6,165.6 140.4,167.0 135.2,168.6 130.0,170.2 124.8,171.9 119.6,173.8 114.4,175.7 109.2,177.7 104.0,179.7 98.8,181.9 93.6,184.1 88.4,186.3 83.2,188.7 78.0,191.1 72.8,193.5 67.6,196.0 62.4,198.5 57.2,201.1 52.0,203.7" class="band black"/>
+<polyline points="52.0,175.9 57.2,174.3 62.4,172.6 67.6,171.0 72.8,169.3 78.0,167.6" class="line dashed black"/>
+<polyline points="83.2,166.0 88.4,164.3 93.6,162.7 98.8,161.0 104.0,159.4 109.2,157.7 114.4,156.0 119.6,154.4 124.8,152.7 130.0,151.1 135.2,149.4 140.4,147.7 145.6,146.1 150.8,144.4 156.0,142.8 161.2,141.1 166.4,139.4 171.6,137.8 176.8,136.1 182.0,134.5 187.2,132.8 192.4,131.2 197.6,129.5 202.8,127.8 208.0,126.2 213.2,124.5 218.4,122.9 223.6,121.2 228.8,119.6 234.0,117.9 239.2,116.2 244.4,114.6 249.6,112.9 254.8,111.3 260.0,109.6 265.2,107.9 270.4,106.3 275.6,104.6 280.8,103.0 286.0,101.3 291.2,99.6 296.4,98.0 301.6,96.3 306.8,94.7 312.0,93.0" class="line black"/>
+<circle cx="52.0" cy="175.9" r="3.5" class="dot black"/>
+<circle cx="312.0" cy="93.0" r="3.5" class="dot black"/>
+<text x="58.0" y="191.9" class="val black">−4.4</text>
+<text x="310.0" y="84.0" class="val black" text-anchor="end">+3.4</text>
+<text x="182.0" y="248" class="axis" text-anchor="middle">share of Black residents</text>
+</g>
+<g transform="translate(350,0)">
+<text x="52" y="18" class="ptitle">Asian surnames</text>
+<line x1="52" x2="312" y1="214.0" y2="214.0" class="grid"/>
+<text x="44" y="218.0" class="tick" text-anchor="end">−8</text>
+<line x1="52" x2="312" y1="171.6" y2="171.6" class="grid"/>
+<text x="44" y="175.6" class="tick" text-anchor="end">−4</text>
+<line x1="52" x2="312" y1="86.9" y2="86.9" class="grid"/>
+<text x="44" y="90.9" class="tick" text-anchor="end">+4</text>
+<line x1="52" x2="312" y1="44.6" y2="44.6" class="grid"/>
+<text x="44" y="48.6" class="tick" text-anchor="end">+8</text>
+<line x1="52" x2="312" y1="129.3" y2="129.3" class="zero"/>
+<text x="44" y="133.3" class="tick" text-anchor="end">0</text>
+<text x="52.0" y="232" class="tick" text-anchor="middle">0%</text>
+<text x="104.0" y="232" class="tick" text-anchor="middle">10%</text>
+<text x="156.0" y="232" class="tick" text-anchor="middle">20%</text>
+<text x="208.0" y="232" class="tick" text-anchor="middle">30%</text>
+<text x="260.0" y="232" class="tick" text-anchor="middle">40%</text>
+<text x="312.0" y="232" class="tick" text-anchor="middle">50%</text>
+<polygon points="52.0,116.4 57.2,116.1 62.4,115.8 67.6,115.4 72.8,115.1 78.0,114.7 83.2,114.4 88.4,114.0 93.6,113.6 98.8,113.2 104.0,112.7 109.2,112.2 114.4,111.7 119.6,111.2 124.8,110.6 130.0,110.1 135.2,109.4 140.4,108.8 145.6,108.1 150.8,107.3 156.0,106.5 161.2,105.7 166.4,104.8 171.6,103.8 176.8,102.8 182.0,101.7 187.2,100.6 192.4,99.4 197.6,98.2 202.8,96.9 208.0,95.5 213.2,94.1 218.4,92.6 223.6,91.1 228.8,89.5 234.0,87.8 239.2,86.1 244.4,84.4 249.6,82.6 254.8,80.8 260.0,78.9 265.2,77.1 270.4,75.1 275.6,73.2 280.8,71.2 286.0,69.2 291.2,67.2 296.4,65.1 301.6,63.0 306.8,60.9 312.0,58.8 312.0,126.5 306.8,126.9 301.6,127.2 296.4,127.6 291.2,128.1 286.0,128.5 280.8,129.0 275.6,129.5 270.4,130.0 265.2,130.5 260.0,131.1 254.8,131.7 249.6,132.4 244.4,133.0 239.2,133.8 234.0,134.6 228.8,135.4 223.6,136.3 218.4,137.2 213.2,138.2 208.0,139.2 202.8,140.3 197.6,141.5 192.4,142.7 187.2,144.0 182.0,145.3 176.8,146.7 171.6,148.2 166.4,149.7 161.2,151.3 156.0,152.9 150.8,154.6 145.6,156.3 140.4,158.1 135.2,159.9 130.0,161.7 124.8,163.6 119.6,165.5 114.4,167.5 109.2,169.4 104.0,171.4 98.8,173.5 93.6,175.5 88.4,177.6 83.2,179.7 78.0,181.7 72.8,183.9 67.6,186.0 62.4,188.2 57.2,190.3 52.0,192.5" class="band asian"/>
+<polyline points="52.0,154.4 57.2,153.2 62.4,152.0 67.6,150.7 72.8,149.5 78.0,148.2 83.2,147.0" class="line dashed asian"/>
+<polyline points="88.4,145.8 93.6,144.5 98.8,143.3 104.0,142.1 109.2,140.8 114.4,139.6 119.6,138.4 124.8,137.1 130.0,135.9 135.2,134.7 140.4,133.4 145.6,132.2 150.8,131.0 156.0,129.7 161.2,128.5 166.4,127.3 171.6,126.0 176.8,124.8 182.0,123.5 187.2,122.3 192.4,121.1 197.6,119.8 202.8,118.6 208.0,117.4 213.2,116.1 218.4,114.9 223.6,113.7 228.8,112.4 234.0,111.2 239.2,110.0 244.4,108.7 249.6,107.5 254.8,106.3 260.0,105.0 265.2,103.8 270.4,102.5 275.6,101.3 280.8,100.1 286.0,98.8 291.2,97.6 296.4,96.4 301.6,95.1 306.8,93.9 312.0,92.7" class="line asian"/>
+<circle cx="52.0" cy="154.4" r="3.5" class="dot asian"/>
+<circle cx="312.0" cy="92.7" r="3.5" class="dot asian"/>
+<text x="58.0" y="170.4" class="val asian">−2.4</text>
+<text x="310.0" y="83.7" class="val asian" text-anchor="end">+3.5</text>
+<text x="182.0" y="248" class="axis" text-anchor="middle">share of Asian residents</text>
+</g>
+<g transform="translate(0,266)">
+<text x="52" y="18" class="ptitle">German surnames</text>
+<line x1="52" x2="312" y1="214.0" y2="214.0" class="grid"/>
+<text x="44" y="218.0" class="tick" text-anchor="end">−8</text>
+<line x1="52" x2="312" y1="171.6" y2="171.6" class="grid"/>
+<text x="44" y="175.6" class="tick" text-anchor="end">−4</text>
+<line x1="52" x2="312" y1="86.9" y2="86.9" class="grid"/>
+<text x="44" y="90.9" class="tick" text-anchor="end">+4</text>
+<line x1="52" x2="312" y1="44.6" y2="44.6" class="grid"/>
+<text x="44" y="48.6" class="tick" text-anchor="end">+8</text>
+<line x1="52" x2="312" y1="129.3" y2="129.3" class="zero"/>
+<text x="44" y="133.3" class="tick" text-anchor="end">0</text>
+<text x="52.0" y="232" class="tick" text-anchor="middle">0%</text>
+<text x="104.0" y="232" class="tick" text-anchor="middle">10%</text>
+<text x="156.0" y="232" class="tick" text-anchor="middle">20%</text>
+<text x="208.0" y="232" class="tick" text-anchor="middle">30%</text>
+<text x="260.0" y="232" class="tick" text-anchor="middle">40%</text>
+<text x="312.0" y="232" class="tick" text-anchor="middle">50%</text>
+<polygon points="52.0,140.5 57.2,140.0 62.4,139.6 67.6,139.1 72.8,138.6 78.0,138.1 83.2,137.6 88.4,137.1 93.6,136.5 98.8,136.0 104.0,135.4 109.2,134.8 114.4,134.2 119.6,133.6 124.8,133.0 130.0,132.3 135.2,131.6 140.4,130.9 145.6,130.1 150.8,129.3 156.0,128.5 161.2,127.6 166.4,126.7 171.6,125.7 176.8,124.6 182.0,123.5 187.2,122.4 192.4,121.2 197.6,119.9 202.8,118.7 208.0,117.4 213.2,116.0 218.4,114.6 223.6,113.2 228.8,111.8 234.0,110.3 239.2,108.8 244.4,107.3 249.6,105.8 254.8,104.3 260.0,102.8 265.2,101.2 270.4,99.7 275.6,98.1 280.8,96.5 286.0,95.0 291.2,93.4 296.4,91.8 301.6,90.2 306.8,88.6 312.0,87.0 312.0,124.7 306.8,125.2 301.6,125.6 296.4,126.1 291.2,126.6 286.0,127.0 280.8,127.5 275.6,128.0 270.4,128.5 265.2,129.0 260.0,129.5 254.8,130.0 249.6,130.6 244.4,131.1 239.2,131.7 234.0,132.3 228.8,132.9 223.6,133.5 218.4,134.1 213.2,134.8 208.0,135.5 202.8,136.3 197.6,137.0 192.4,137.9 187.2,138.7 182.0,139.6 176.8,140.6 171.6,141.6 166.4,142.7 161.2,143.8 156.0,145.0 150.8,146.2 145.6,147.4 140.4,148.7 135.2,150.0 130.0,151.4 124.8,152.8 119.6,154.2 114.4,155.7 109.2,157.1 104.0,158.6 98.8,160.1 93.6,161.6 88.4,163.2 83.2,164.7 78.0,166.2 72.8,167.8 67.6,169.4 62.4,170.9 57.2,172.5 52.0,174.1" class="band german"/>
+<polyline points="52.0,157.3 57.2,156.3 62.4,155.2 67.6,154.2 72.8,153.2 78.0,152.2 83.2,151.1 88.4,150.1 93.6,149.1" class="line dashed german"/>
+<polyline points="98.8,148.0 104.0,147.0 109.2,146.0 114.4,145.0 119.6,143.9 124.8,142.9 130.0,141.9 135.2,140.8 140.4,139.8 145.6,138.8 150.8,137.8 156.0,136.7 161.2,135.7 166.4,134.7 171.6,133.6 176.8,132.6 182.0,131.6 187.2,130.6 192.4,129.5 197.6,128.5 202.8,127.5 208.0,126.4 213.2,125.4 218.4,124.4 223.6,123.4 228.8,122.3 234.0,121.3 239.2,120.3 244.4,119.2 249.6,118.2" class="line german"/>
+<polyline points="254.8,117.2 260.0,116.1 265.2,115.1 270.4,114.1 275.6,113.1 280.8,112.0 286.0,111.0 291.2,110.0 296.4,108.9 301.6,107.9 306.8,106.9 312.0,105.9" class="line dashed german"/>
+<circle cx="52.0" cy="157.3" r="3.5" class="dot german"/>
+<circle cx="312.0" cy="105.9" r="3.5" class="dot german"/>
+<text x="58.0" y="173.3" class="val german">−2.6</text>
+<text x="310.0" y="96.9" class="val german" text-anchor="end">+2.2</text>
+<text x="182.0" y="248" class="axis" text-anchor="middle">share of residents of German ancestry</text>
+</g>
+<g transform="translate(350,266)">
+<text x="52" y="18" class="ptitle">Hispanic surnames</text>
+<line x1="52" x2="312" y1="214.0" y2="214.0" class="grid"/>
+<text x="44" y="218.0" class="tick" text-anchor="end">−8</text>
+<line x1="52" x2="312" y1="171.6" y2="171.6" class="grid"/>
+<text x="44" y="175.6" class="tick" text-anchor="end">−4</text>
+<line x1="52" x2="312" y1="86.9" y2="86.9" class="grid"/>
+<text x="44" y="90.9" class="tick" text-anchor="end">+4</text>
+<line x1="52" x2="312" y1="44.6" y2="44.6" class="grid"/>
+<text x="44" y="48.6" class="tick" text-anchor="end">+8</text>
+<line x1="52" x2="312" y1="129.3" y2="129.3" class="zero"/>
+<text x="44" y="133.3" class="tick" text-anchor="end">0</text>
+<text x="52.0" y="232" class="tick" text-anchor="middle">0%</text>
+<text x="104.0" y="232" class="tick" text-anchor="middle">10%</text>
+<text x="156.0" y="232" class="tick" text-anchor="middle">20%</text>
+<text x="208.0" y="232" class="tick" text-anchor="middle">30%</text>
+<text x="260.0" y="232" class="tick" text-anchor="middle">40%</text>
+<text x="312.0" y="232" class="tick" text-anchor="middle">50%</text>
+<polygon points="52.0,119.0 57.2,118.8 62.4,118.7 67.6,118.5 72.8,118.3 78.0,118.1 83.2,117.9 88.4,117.7 93.6,117.5 98.8,117.3 104.0,117.1 109.2,116.9 114.4,116.7 119.6,116.4 124.8,116.2 130.0,116.0 135.2,115.7 140.4,115.4 145.6,115.2 150.8,114.9 156.0,114.6 161.2,114.3 166.4,114.0 171.6,113.7 176.8,113.4 182.0,113.1 187.2,112.7 192.4,112.4 197.6,112.0 202.8,111.7 208.0,111.3 213.2,110.9 218.4,110.4 223.6,110.0 228.8,109.5 234.0,109.1 239.2,108.6 244.4,108.1 249.6,107.6 254.8,107.0 260.0,106.5 265.2,105.9 270.4,105.3 275.6,104.7 280.8,104.1 286.0,103.4 291.2,102.7 296.4,102.0 301.6,101.3 306.8,100.6 312.0,99.8 312.0,132.6 306.8,133.1 301.6,133.7 296.4,134.3 291.2,134.8 286.0,135.4 280.8,136.1 275.6,136.7 270.4,137.4 265.2,138.1 260.0,138.8 254.8,139.5 249.6,140.2 244.4,141.0 239.2,141.8 234.0,142.6 228.8,143.4 223.6,144.2 218.4,145.0 213.2,145.9 208.0,146.8 202.8,147.6 197.6,148.5 192.4,149.5 187.2,150.4 182.0,151.3 176.8,152.3 171.6,153.2 166.4,154.2 161.2,155.2 156.0,156.2 150.8,157.2 145.6,158.2 140.4,159.2 135.2,160.2 130.0,161.2 124.8,162.3 119.6,163.3 114.4,164.4 109.2,165.4 104.0,166.5 98.8,167.5 93.6,168.6 88.4,169.7 83.2,170.8 78.0,171.9 72.8,172.9 67.6,174.0 62.4,175.1 57.2,176.2 52.0,177.3" class="band hispanic"/>
+<polyline points="52.0,148.2 57.2,147.5 62.4,146.9 67.6,146.3 72.8,145.6 78.0,145.0 83.2,144.3 88.4,143.7 93.6,143.1 98.8,142.4 104.0,141.8" class="line dashed hispanic"/>
+<polyline points="109.2,141.2 114.4,140.5 119.6,139.9 124.8,139.2 130.0,138.6 135.2,138.0 140.4,137.3 145.6,136.7 150.8,136.0 156.0,135.4 161.2,134.8 166.4,134.1 171.6,133.5 176.8,132.8 182.0,132.2 187.2,131.6 192.4,130.9 197.6,130.3 202.8,129.6 208.0,129.0 213.2,128.4 218.4,127.7 223.6,127.1 228.8,126.5 234.0,125.8 239.2,125.2 244.4,124.5 249.6,123.9 254.8,123.3 260.0,122.6 265.2,122.0 270.4,121.3 275.6,120.7 280.8,120.1 286.0,119.4 291.2,118.8 296.4,118.1 301.6,117.5 306.8,116.9 312.0,116.2" class="line hispanic"/>
+<circle cx="52.0" cy="148.2" r="3.5" class="dot hispanic"/>
+<circle cx="312.0" cy="116.2" r="3.5" class="dot hispanic"/>
+<text x="58.0" y="164.2" class="val hispanic">−1.8</text>
+<text x="310.0" y="107.2" class="val hispanic" text-anchor="end">+1.2</text>
+<text x="182.0" y="248" class="axis" text-anchor="middle">share of Hispanic residents</text>
+</g>
+</svg>
+    </div>
+    <div class="key">
+      <span><i class="sw"></i>where most of these candidates run</span>
+      <span><i class="sw dash"></i>projection</span>
+      <span><i class="sw band"></i>95% confidence band</span>
+    </div>
+    <figcaption>Fitted lines from regressions that compare candidates within the same race. Black, Asian and Hispanic panels compare a surname held entirely by that group with a white surname, using the group's share of the city or county population. The German panel compares German-origin surnames with Anglo ones, using the share of residents reporting German ancestry (ACS 2006–2010). The solid part of each line covers the middle 80% of places where that group's candidates ran.</figcaption>
+  </figure>
+
+  <p>In local elections, a surname seems to cost votes only where few residents share it. A candidate with a Black-coded surname got about 4 points less than a white, Anglo-named opponent in the same race where almost no residents are Black, but about 3 points more where half are. Asian and Hispanic surnames follow the same pattern, and so do German surnames when measured against how many residents report German ancestry. This explains why the overall averages looked flat. Many Hispanic and Black candidates run where their group makes up a large share of voters, so the penalty in some places and the boost in others cancel out. German, Italian or Scandinavian-origin candidates rarely run where their ancestry group is that large, so their names show a small penalty on average. These are associations rather than proof of why voters choose as they do, and the dashed ends of each line are projections beyond where most candidates actually ran.</p>
+</div>

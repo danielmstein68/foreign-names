@@ -1,0 +1,90 @@
+<title>Names and Local Voters</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: headline, the 2×2 chart at full column width, then the explanation. Same identity as the study's other pages. */
+:root {
+  --bg: #f3f5f2;
+  --fg: #18212c;
+  --muted: #5b6673;
+  --line: #d9dfdc;
+  --zero: #8b959f;
+  --c-black: #6b4fa6;
+  --c-asian: #1f8a8a;
+  --c-german: #24548a;
+  --c-hispanic: #c0661f;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171d; --fg: #e4e9ee; --muted: #9aa6b2; --line: #28323c; --zero: #6d7884;
+    --c-black: #ab95e6; --c-asian: #5cc8c8; --c-german: #7fb0e3; --c-hispanic: #eb9a55;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171d; --fg: #e4e9ee; --muted: #9aa6b2; --line: #28323c; --zero: #6d7884;
+  --c-black: #ab95e6; --c-asian: #5cc8c8; --c-german: #7fb0e3; --c-hispanic: #eb9a55;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page {
+  max-width: 760px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 36px 52px;
+  display: grid; gap: 22px;
+}
+h1 { font-family: var(--font-display); font-weight: 650; font-size: clamp(1.6rem, 4.5vw, 2.3rem); line-height: 1.15; text-wrap: balance; margin: 0; }
+.sub { color: var(--muted); margin: 0; max-width: 62ch; }
+p { margin: 0; max-width: 66ch; }
+figure { margin: 0; display: grid; gap: 10px; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.chart { display: block; width: 100%; min-width: 520px; height: auto; }
+figcaption { font-size: 0.85rem; color: var(--muted); max-width: 70ch; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.82rem; color: var(--muted); }
+.key span { display: inline-flex; align-items: center; gap: 8px; }
+.sw { display: inline-block; width: 26px; height: 0; border-top: 2.5px solid var(--muted); }
+.sw.dash { border-top-style: dashed; }
+.sw.band { height: 10px; border: 0; background: color-mix(in srgb, var(--muted) 22%, transparent); }
+
+/* Chart styles */
+.ptitle { font-family: var(--font-body); font-size: 14px; font-weight: 600; fill: var(--fg); }
+.tick { font-family: var(--font-data); font-size: 10.5px; fill: var(--muted); }
+.axis { font-family: var(--font-body); font-size: 11px; fill: var(--muted); }
+.grid { stroke: var(--line); stroke-width: 1; }
+.zero { stroke: var(--zero); stroke-width: 1.3; }
+polygon.band { stroke: none; fill-opacity: 0.16; }
+.line { fill: none; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; }
+.line.dashed { stroke-width: 2; stroke-dasharray: 5 5; }
+.val { font-family: var(--font-data); font-size: 12px; font-weight: 500; }
+.black { stroke: var(--c-black); fill: var(--c-black); }
+.asian { stroke: var(--c-asian); fill: var(--c-asian); }
+.german { stroke: var(--c-german); fill: var(--c-german); }
+.hispanic { stroke: var(--c-hispanic); fill: var(--c-hispanic); }
+.line.black, .line.asian, .line.german, .line.hispanic { fill: none; }
+.val.black, .val.asian, .val.german, .val.hispanic { stroke: none; }
+</style>
+
+<div class="page">
+  <h1>Surnames lose votes where few voters share them, and gain where many do</h1>
+  <p class="sub">Local elections. Points of vote share compared with a white, Anglo-named opponent in the same race.</p>
+
+  <figure>
+    <div class="scroll">
+<!--CHART-->
+    </div>
+    <div class="key">
+      <span><i class="sw"></i>where most of these candidates run</span>
+      <span><i class="sw dash"></i>projection</span>
+      <span><i class="sw band"></i>95% confidence band</span>
+    </div>
+    <figcaption>Fitted lines from regressions that compare candidates within the same race. Black, Asian and Hispanic panels compare a surname held entirely by that group with a white surname, using the group's share of the city or county population. The German panel compares German-origin surnames with Anglo ones, using the share of residents reporting German ancestry (ACS 2006–2010). The solid part of each line covers the middle 80% of places where that group's candidates ran.</figcaption>
+  </figure>
+
+  <p>In local elections, a surname seems to cost votes only where few residents share it. A candidate with a Black-coded surname got about 4 points less than a white, Anglo-named opponent in the same race where almost no residents are Black, but about 3 points more where half are. Asian and Hispanic surnames follow the same pattern, and so do German surnames when measured against how many residents report German ancestry. This explains why the overall averages looked flat. Many Hispanic and Black candidates run where their group makes up a large share of voters, so the penalty in some places and the boost in others cancel out. German, Italian or Scandinavian-origin candidates rarely run where their ancestry group is that large, so their names show a small penalty on average. These are associations rather than proof of why voters choose as they do, and the dashed ends of each line are projections beyond where most candidates actually ran.</p>
+</div>
