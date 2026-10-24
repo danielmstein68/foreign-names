@@ -1,0 +1,336 @@
+surname,candidates,p_muslim,decision
+AL-MUHAYMIN,2,0.998,keep
+AL-BAWI,1,0.998,keep
+ISKANDAR,1,0.992,keep
+ERSOYLU,1,0.992,keep
+AL'UQDAH,1,0.992,keep
+AKSOY,1,0.989,keep
+JAFARZADEH,1,0.986,keep
+DEHGHANI-TAFTI,1,0.983,keep
+ASLAN,1,0.977,keep
+TAHMASBI,1,0.976,keep
+BAYATI,2,0.976,keep
+EL-FARGHALI,1,0.975,keep
+MOUSTAFA,1,0.975,keep
+ALSAWAFY,1,0.975,keep
+ELGOUHRI,1,0.974,keep
+AL-AMIN,1,0.973,keep
+AL-AQIDI,1,0.972,keep
+GHORBANI,4,0.968,keep
+ARMOUDIAN,2,0.968,keep
+AL-HANOOTI,1,0.963,keep
+NASUTI,2,0.963,keep
+ABDELAZIZ,3,0.962,keep
+UQDAH,2,0.961,keep
+NAGHIBI,1,0.954,keep
+MOHAMMADI,1,0.954,keep
+ABDELMAGEED,1,0.954,keep
+OKCETIN,1,0.953,keep
+BEYROUTI,1,0.953,keep
+ALPAY,3,0.949,keep
+ABDUL-MALIK,1,0.948,keep
+MIRLISENA,4,0.946,strike: unclear origin
+RAMLAWI,2,0.94,keep
+MONEYMAKER,1,0.939,strike: other origin
+EL-AMIN,1,0.937,keep
+SERIBUTRA,1,0.935,strike: other origin
+SABZEHZAR,1,0.931,keep
+MIRKARIMI,6,0.93,keep
+ATAY,2,0.93,keep
+AKBARI,1,0.926,keep
+BILICIH,1,0.926,strike: unclear origin
+ABOLFAZLI,1,0.925,keep
+ABDIN,1,0.922,keep
+BAGHDADCHI,1,0.921,keep
+ZARGHAMI,1,0.919,keep
+SAAFIR,1,0.919,keep
+SHEHADEH,2,0.917,keep
+KHALAF,1,0.917,keep
+AFSHAN,1,0.913,keep
+SULIMAN,1,0.912,keep
+FUHRIMAN,2,0.912,keep
+FATTAH,11,0.91,keep
+FIDA'L,1,0.908,keep
+PASHA,1,0.904,keep
+MOHSENI,1,0.902,keep
+RAMLOGAN,1,0.902,strike: other origin
+ANWILER,1,0.902,strike: other origin
+ABTAHI,1,0.897,keep
+CONSTANTINOPLE,2,0.892,strike: other origin
+ALYASSIN,1,0.892,keep
+BADDOURAH,3,0.89,keep
+BAYDOUN,3,0.889,keep
+MOKHTARI,1,0.884,keep
+ELBADRI,1,0.884,keep
+DIRADOUR,2,0.882,keep
+ABDELAZIM,1,0.882,keep
+ALSHAMI,2,0.88,keep
+ABDELLA,1,0.879,keep
+ELHADY,1,0.875,keep
+SAYAD,1,0.875,keep
+SHAHRIARI,1,0.873,keep
+SULIBURK,1,0.871,strike: other origin
+FAYAD,1,0.871,keep
+SALIH,3,0.87,keep
+HATAMI,1,0.868,keep
+KHALIF,1,0.868,keep
+ABU-GHAZALAH,1,0.868,keep
+NUAIMI,4,0.868,keep
+HAMADEH,1,0.867,keep
+ASTAFAN,1,0.865,strike: unclear origin
+MOEPONO,2,0.864,strike: other origin
+HAMDAN,1,0.862,keep
+MOGHADAM,1,0.861,keep
+MARTINEZ-ALIRE,1,0.86,strike: other origin
+JAFARI,2,0.86,keep
+SALESMAN,3,0.86,strike: other origin
+HEDAYAT,1,0.859,keep
+HUSSEINI,1,0.858,keep
+BUZAID,2,0.857,keep
+ARAB,1,0.857,keep
+SARKODIEH,2,0.853,strike: other origin
+ALIKHANI,1,0.852,keep
+EMAMI,1,0.851,keep
+FARHAT,6,0.849,keep
+HANAFAN,4,0.843,keep
+SAKRAN,1,0.843,keep
+YOUSSEF,3,0.841,keep
+KALAF,1,0.84,keep
+ANANTATMULA,1,0.839,strike: other origin
+HUTHMAN,1,0.838,strike: other origin
+SIADEK,1,0.838,strike: unclear origin
+SIGAFOOSE,1,0.837,strike: other origin
+SINAGRA,1,0.837,strike: other origin
+FARHANG,1,0.834,keep
+AYYASH,1,0.832,keep
+BALEKIAN,1,0.832,keep
+NAJARIAN,6,0.832,keep
+EL-FARRA,1,0.832,keep
+ALSHARIF,1,0.829,keep
+KHALFANI,1,0.829,keep
+CAMPA-NAJJAR,2,0.828,keep
+SAADI,3,0.828,keep
+KARBASSI,4,0.825,keep
+BATMAN,1,0.825,strike: other origin
+BELL-RAHMAN,1,0.823,keep
+MUSTAFA,1,0.823,keep
+KIZILOGLU,1,0.823,keep
+HAWATMEH,1,0.822,keep
+RAHEB,1,0.819,keep
+BOULGHOURJIAN,1,0.819,keep
+HAMMUDI,2,0.818,keep
+BAKHTIARI,2,0.817,keep
+SALEH,9,0.817,keep
+AZMI,1,0.816,keep
+MEHRABIAN,2,0.815,keep
+ERET,1,0.813,strike: unclear origin
+SHARAFAT,1,0.813,keep
+ABOUDAMOUS,1,0.812,keep
+YANIZ,1,0.811,strike: unclear origin
+MEHFOUD,2,0.808,keep
+BOUNARROTI,1,0.807,strike: other origin
+ISENHOUR,2,0.805,strike: other origin
+NAJJAR,1,0.805,keep
+SUMEREL,1,0.803,strike: other origin
+BOZAR,2,0.802,strike: unclear origin
+OTHMAN,1,0.802,keep
+KHOURI,3,0.8,keep
+HAMZY,1,0.798,keep
+CHALIFOUR,1,0.797,strike: other origin
+AGHAALIANDASTJERDI,1,0.796,keep
+JABBARI,1,0.795,keep
+BEY,9,0.795,keep
+FARID,1,0.794,keep
+SHAMSIE,1,0.792,keep
+KHALATBARI,2,0.791,keep
+KURT,4,0.79,strike: other origin
+KHATIBI,2,0.79,keep
+LUTFY,1,0.789,keep
+JOUNIARI,1,0.789,keep
+SINAPI,2,0.788,strike: other origin
+KESARWANI,1,0.788,strike: other origin
+SAYED,1,0.786,keep
+DEDI,1,0.785,strike: unclear origin
+ZEDIKER,2,0.784,strike: other origin
+KASKANIAN,2,0.784,keep
+GAGHAGEN,1,0.782,strike: other origin
+ORAZEM,2,0.781,strike: other origin
+SALEHI,4,0.779,keep
+KARKAMAZ,2,0.778,keep
+SITOMER,1,0.777,strike: other origin
+HADDAD,10,0.777,keep
+HIDARY,1,0.777,keep
+CHRISTIANA,1,0.777,strike: other origin
+AGHAKHANIAN,3,0.776,keep
+ALAMI,1,0.775,keep
+SERIAN,1,0.775,strike: unclear origin
+MAHMOUD,1,0.775,keep
+BEYLIKJIAN,1,0.774,keep
+REFAH,1,0.773,keep
+SILIPENA,3,0.772,strike: other origin
+CATALBASOGLU,1,0.772,keep
+SABRI,1,0.77,keep
+MANSOUR,1,0.77,keep
+FAZAL,1,0.77,keep
+MANSUR,2,0.769,keep
+JABARI,1,0.769,keep
+SAADIQ,3,0.769,keep
+MOSLEHI,1,0.768,keep
+BAGHERI,1,0.768,keep
+KEDIKIAN,1,0.768,keep
+ABDULLAH,1,0.767,keep
+HAMID,1,0.767,keep
+TOPAL,1,0.766,keep
+NAIFEH,1,0.766,keep
+MANSOORI,1,0.766,keep
+HAMMAD,1,0.764,keep
+CHOULAGH,1,0.764,strike: unclear origin
+SHAHAB,1,0.762,keep
+BOUDI,1,0.762,strike: unclear origin
+WAHID,2,0.761,keep
+MOZLOOM,1,0.757,keep
+TEIRAB,1,0.757,keep
+HAMMOUD,3,0.756,keep
+TLAIB,4,0.756,keep
+KERPANI,2,0.755,strike: unclear origin
+BOGHOSIAN,1,0.755,keep
+TAHER,1,0.754,keep
+KOCAN,1,0.752,keep
+YENSEN,4,0.75,strike: other origin
+ES-SUDAN,1,0.75,keep
+BAROUK,1,0.747,keep
+MAOUNIS,1,0.747,strike: other origin
+HAKIM,2,0.747,keep
+DILENA,1,0.747,strike: other origin
+BASTUK,1,0.746,strike: unclear origin
+NIGSARIAN,2,0.746,keep
+SUBAK,1,0.746,strike: unclear origin
+YAMOUT,1,0.744,keep
+AGHAJANIAN,3,0.744,keep
+SUARA,1,0.743,strike: unclear origin
+MOKHLESSIN,1,0.742,keep
+SHIRAZI,1,0.742,keep
+KHOURY,1,0.741,keep
+HOVANESSIAN,1,0.74,keep
+AWAD,2,0.739,keep
+RINIKER,2,0.739,strike: other origin
+UNGAB,2,0.739,strike: unclear origin
+LINCECUM,1,0.738,strike: other origin
+PEREZ-SAAB,2,0.738,keep
+SALEM,4,0.737,keep
+WAHAB,1,0.736,keep
+NALVEN,1,0.734,strike: other origin
+YACOUB,1,0.734,keep
+DELEHANTY,4,0.733,strike: other origin
+NASSOUR,1,0.733,keep
+YOUSEFI,1,0.733,keep
+ESRATI,4,0.732,keep
+DANTONA,1,0.732,strike: other origin
+KHALIL,1,0.728,keep
+KEITAZULU,1,0.728,strike: other origin
+CHELEBIAN,1,0.728,keep
+ABRAHIM,2,0.728,keep
+SAID,1,0.725,keep
+SETEPENRE,1,0.724,strike: other origin
+DESMUKES,1,0.723,strike: other origin
+PARSEGHIAN,1,0.723,keep
+NASSIF,4,0.723,keep
+WASIK,1,0.723,strike: other origin
+SHAFIK,1,0.719,keep
+HUSSEIN,1,0.719,keep
+JABBOUR,2,0.718,keep
+DIFILIPPO,2,0.717,strike: other origin
+NADIR,1,0.717,keep
+MABRY,6,0.716,strike: other origin
+SULTAN,2,0.716,keep
+MAJID,1,0.715,keep
+EMRY,1,0.713,strike: other origin
+FARAH,3,0.713,keep
+DILAN,7,0.712,keep
+JAKMIDES,2,0.712,strike: other origin
+RASHAD,1,0.711,keep
+SUNIGA,4,0.71,strike: other origin
+SALEKIN,1,0.709,keep
+SEDITA,5,0.709,strike: other origin
+JULIANA,6,0.709,strike: other origin
+AKBAR,1,0.708,keep
+ALSLANIAN,1,0.708,keep
+LATURNER,2,0.707,strike: other origin
+KARABIAN,1,0.705,keep
+SADRI,1,0.705,keep
+NADIM,1,0.704,keep
+ADHAMI,1,0.704,keep
+YURDIN,4,0.703,strike: unclear origin
+ASLANIAN,2,0.702,keep
+TOLKAN,1,0.702,strike: unclear origin
+SAFAI,6,0.701,keep
+SHOOSHANIAN,1,0.701,keep
+JAVAHERI,1,0.7,keep
+SABBAGH,1,0.699,keep
+TOPRANI,1,0.699,strike: other origin
+KUWIK,8,0.698,strike: other origin
+BARYAB,1,0.698,strike: unclear origin
+SHAFTO,1,0.697,strike: other origin
+ICENHOUR,1,0.697,strike: other origin
+AYUB,1,0.697,keep
+ELTIFE,1,0.696,keep
+OSNAYA,1,0.693,strike: other origin
+SOLIMAN,1,0.693,keep
+DUMAN,1,0.692,keep
+NASSER,3,0.691,keep
+KONIZ,3,0.691,strike: unclear origin
+ZAKLAMA,3,0.69,keep
+ASKARI,1,0.69,keep
+FATEH,1,0.69,keep
+NOURI,1,0.689,keep
+ABAHSAIN,1,0.684,keep
+NASRAH,1,0.684,keep
+BABADLIR,1,0.684,strike: unclear origin
+YALKUT,1,0.683,strike: unclear origin
+OSLAN,1,0.682,strike: unclear origin
+KAMYAB,1,0.682,keep
+SELEN,1,0.681,strike: unclear origin
+AFISVALU,1,0.68,strike: other origin
+ZAIM,1,0.68,keep
+ALAMEEL,1,0.678,keep
+SADEGH,1,0.678,keep
+AFZALI,1,0.677,keep
+SHALHOUB,1,0.676,keep
+NIKYAR,3,0.676,keep
+DAOUD,2,0.674,keep
+TECUMSEH,1,0.673,strike: other origin
+AKHIL,1,0.672,strike: other origin
+ZAINYEH,1,0.671,keep
+ARIF,1,0.671,keep
+ALTMIRE,3,0.671,strike: other origin
+YEGER,4,0.67,strike: other origin
+KHADER,1,0.669,keep
+YASMINE,1,0.668,strike: unclear origin
+HELALI,1,0.667,keep
+MAZARJI,1,0.664,keep
+CHAHEINE,1,0.664,keep
+SUASTEGUI,1,0.664,strike: other origin
+ABDI,1,0.664,keep
+GHANTA,1,0.663,strike: other origin
+DENESHA,1,0.662,strike: unclear origin
+WINUK,1,0.662,strike: other origin
+UNTAL,1,0.662,strike: unclear origin
+TAHAN,4,0.662,keep
+USMAN,1,0.66,keep
+ALAMIN-KHASHOGGI,2,0.66,keep
+MOUSTIS,8,0.66,strike: other origin
+ABOUD,1,0.659,keep
+ABOUMRAD,1,0.659,keep
+SORSABAL,1,0.658,strike: other origin
+INSHIRAH,1,0.657,keep
+BILAL,3,0.657,keep
+SAIFIE,5,0.655,keep
+ABDNOR,4,0.654,keep
+ABDUL,2,0.653,keep
+OSMAN,3,0.653,keep
+LESTITIAN,1,0.652,strike: unclear origin
+SIVISOGLU,1,0.652,keep
+ERTEL,5,0.651,strike: other origin
+KASAP,1,0.651,keep
+SAADAT,1,0.651,keep
+SHADEGG,8,0.651,strike: other origin

@@ -48,3 +48,14 @@
 ## Known weaknesses (stated, not fixed)
 - The model's categories reflect Wikipedia/Wikidata citizenship, not U.S. voters' perceptions.
 - Black Americans with English-origin surnames (Washington, Jackson) should be coded "not foreign". That is intended: they are the "non-white but not foreign" cell.
+
+## Add-on: Middle Eastern / Muslim-origin names (added 2026-10-24, before any results)
+Daniel asked for this exploratory add-on after the checkpoint. It was fixed before any vote results were seen.
+- **Flag:** a candidate counts as `mena` = 1 if ethnicolr's P("GreaterAfrican,Muslim") > 0.65 **and** the surname survived a hand review.
+  - The review was done by Claude; Daniel delegated it.
+  - Every decision is in `docs/mena_name_review.csv`, and the code is in `src/mena_review.py`.
+  - Of 335 flagged surnames, 242 were kept, 65 were struck as clearly another origin (Moneymaker, Altmire, Mabry…), and 28 were struck as unclear.
+- **Strict version:** `mena_strict` additionally requires P > 0.8.
+- **Kept on purpose:** Arab Christian, Armenian, Turkish, Iranian and African-American Muslim names. A surname shows origin, not religion.
+- **Why it matters for H2:** the 2010 Census counts Middle Eastern people as white. The median kept name is 77% white, so these names are mostly "white-coded but foreign".
+- **Sample size:** the main sample has only 189 candidates (85 strict) in 188 contests: 118 local nonpartisan, 37 local partisan, 29 House, 5 Senate. Only a pooled estimate is feasible, and it is reported as exploratory.
