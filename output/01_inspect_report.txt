@@ -1,0 +1,912 @@
+00_readme.txt: could not read (Error tokenizing data. C error: Expected 5 fields in line 52, saw 6
+)
+================================================================================
+ledb_candidatelevel.csv: 126,599 rows x 32 columns
+--------------------------------------------------------------------------------
+ledb_candid              int64
+full_name                  str
+firstname                  str
+lastname                   str
+fips                       str
+geo_name                   str
+state_abb                  str
+office_consolidated        str
+year                     int64
+month                  float64
+district                   str
+contest                    str
+votes                  float64
+vote_share             float64
+n_winners                int64
+winner                     str
+incumbent              float64
+contributor.cfscore    float64
+bonica.cid             float64
+prob_democrat          float64
+prob_republican        float64
+pid_est                    str
+prob_female            float64
+prob_male              float64
+gender_est                 str
+prob_black             float64
+prob_white             float64
+prob_hispanic          float64
+prob_asian             float64
+prob_other             float64
+race_est                   str
+ballotpedia_url            str
+
+First 3 rows:
+                                                                        0                                                     1                                                     2
+ledb_candid                                                         59965                                                 59966                                                 59968
+full_name                                                    gil garcetti                                         george gascon                                          jackie lacey
+firstname                                                             gil                                                george                                                jackie
+lastname                                                         garcetti                                                gascon                                                 lacey
+fips                                                                06037                                                 06037                                                 06037
+geo_name                                                      los angeles                                           los angeles                                           los angeles
+state_abb                                                              CA                                                    CA                                                    CA
+office_consolidated                                            Prosecutor                                            Prosecutor                                            Prosecutor
+year                                                                 1992                                                  2020                                                  2020
+month                                                                11.0                                                  11.0                                                  11.0
+district                                                      los angeles                                           los angeles                                           los angeles
+contest              6037_1992_11_los angeles_CA_Prosecutor_los angeles_1  6037_2020_11_los angeles_CA_Prosecutor_los angeles_1  6037_2020_11_los angeles_CA_Prosecutor_los angeles_1
+votes                                                           2061218.0                                             2002865.0                                             1738617.0
+vote_share                                                           0.82                                                  0.54                                                  0.46
+n_winners                                                               1                                                     1                                                     1
+winner                                                                win                                                   win                                                  lose
+incumbent                                                             NaN                                                   0.0                                                   1.0
+contributor.cfscore                                                 -0.81                                                 -0.72                                                  0.25
+bonica.cid                                                   4079313811.0                                         36023843920.0                                         33208735478.0
+prob_democrat                                                        0.88                                                   1.0                                                  0.73
+prob_republican                                                      0.12                                                   0.0                                                  0.27
+pid_est                                                                 D                                                     D                                                     D
+prob_female                                                          0.03                                                   0.0                                                  0.51
+prob_male                                                            0.97                                                   1.0                                                  0.49
+gender_est                                                              M                                                     M                                                     F
+prob_black                                                           0.02                                                  0.14                                                  0.91
+prob_white                                                           0.83                                                  0.72                                                  0.09
+prob_hispanic                                                        0.14                                                   0.1                                                   0.0
+prob_asian                                                           0.01                                                  0.03                                                   0.0
+prob_other                                                            0.0                                                   0.0                                                   0.0
+race_est                                                        caucasian                                             caucasian                                                 black
+ballotpedia_url                                                       NaN                                                   NaN                                                   NaN
+
+[year] column 'office_consolidated': 7 distinct values
+office_consolidated
+City Council          49745
+County Legislature    43761
+Mayor                 11020
+School Board           8080
+Prosecutor             6306
+Sheriff                6038
+County Executive       1649
+
+[year] column 'year': 33 distinct values
+year
+2018    6930
+2020    6421
+2016    6383
+2014    6298
+2010    6290
+2012    6100
+2008    5548
+2006    5285
+2004    5010
+2002    4784
+2015    4474
+2011    4397
+2019    4346
+2000    4184
+2013    3981
+
+[office] column 'office_consolidated': 7 distinct values
+office_consolidated
+City Council          49745
+County Legislature    43761
+Mayor                 11020
+School Board           8080
+Prosecutor             6306
+Sheriff                6038
+County Executive       1649
+
+[office] column 'contest': 57,205 distinct values
+contest
+4075000_1992_8_tulsa_OK_Mayor_mayor_1                                    40
+2743000_2013_11_minneapolis_MN_Mayor_mayor_1                             34
+3918000_2003_11_columbus_OH_Mayor_mayor_1                                33
+3915000_2021_11_cincinnati_OH_City Council_synthetic at-large b_9        33
+3915000_2005_11_cincinnati_OH_City Council_synthetic at-large b_9        30
+2511000_1993_11_cambridge_MA_City Council_synthetic at-large b_9         28
+42079_2011_11_luzerne_PA_County Legislature_at-large 1_1                 27
+3915000_2003_11_cincinnati_OH_City Council_synthetic at-large d_9        26
+3915000_2007_11_cincinnati_OH_City Council_synthetic at-large d_9        26
+2511000_1989_11_cambridge_MA_City Council_synthetic at-large b_9         26
+2511000_2017_11_cambridge_MA_City Council_synthetic at-large b_9         26
+3915000_1991_11_cincinnati_OH_City Council_synthetic at-large d_9        25
+3915000_2001_11_cincinnati_OH_City Council_synthetic at-large b_9        25
+2511000_2013_11_cambridge_MA_City Council_synthetic at-large b_9         25
+609620_2003_11_Compton Unified_CA_School Board_synthetic at-large d_3    25
+
+[office] column 'race_est': 6 distinct values
+race_est
+caucasian    98563
+black        13931
+hispanic      9468
+asian         2336
+NaN           2286
+other           15
+
+[incumbent] column 'incumbent': 3 distinct values
+incumbent
+0.0    70910
+1.0    31624
+NaN    24065
+
+[name] column 'full_name': 78,527 distinct values
+full_name
+john murphy          23
+william coleman      21
+william bell         19
+michael sullivan     18
+konstantina lukes    18
+john anderson        17
+joseph petty         17
+timothy toomey       16
+john kelly           15
+don brown            15
+bill smuckler        14
+michael flaherty     14
+jewel ware           14
+miguel pulido        14
+richard nicolello    14
+
+[name] column 'firstname': 7,650 distinct values
+firstname
+john       3838
+michael    2631
+david      2409
+robert     2151
+james      2114
+richard    1575
+william    1451
+mark       1377
+mike       1377
+jim        1340
+bill       1150
+thomas     1146
+paul       1137
+steve      1106
+joseph     1072
+
+[name] column 'lastname': 30,565 distinct values
+lastname
+smith       932
+johnson     818
+brown       656
+jones       585
+williams    585
+davis       502
+miller      452
+anderson    417
+white       335
+thomas      324
+wilson      324
+martin      319
+moore       309
+taylor      290
+harris      283
+
+[name] column 'geo_name': 1,435 distinct values
+geo_name
+NaN              2166
+new york         1472
+chicago          1157
+san francisco     870
+washington        819
+kent              809
+monroe            802
+orange            800
+oakland           783
+jefferson         713
+nassau            664
+westchester       650
+dutchess          646
+erie              627
+suffolk           613
+================================================================================
+mit_countypres_dataverse_files.zip::countypres_2000-2024.tab: 94,151 rows x 12 columns
+--------------------------------------------------------------------------------
+state                 str
+county_name           str
+year                int64
+state_po              str
+county_fips       float64
+office                str
+candidate             str
+party                 str
+candidatevotes    float64
+totalvotes          int64
+version             int64
+mode                  str
+
+First 3 rows:
+                           0             1                2
+state                ALABAMA       ALABAMA          ALABAMA
+county_name          AUTAUGA       AUTAUGA          AUTAUGA
+year                    2024          2024             2024
+state_po                  AL            AL               AL
+county_fips           1001.0        1001.0           1001.0
+office          US PRESIDENT  US PRESIDENT     US PRESIDENT
+candidate              OTHER  CHASE OLIVER  KAMALA D HARRIS
+party                  OTHER   LIBERTARIAN         DEMOCRAT
+candidatevotes         293.0          65.0           7439.0
+totalvotes             28281         28281            28281
+version             20260225      20260225         20260225
+mode                   TOTAL         TOTAL            TOTAL
+
+[year] column 'year': 7 distinct values
+year
+2020    22093
+2024    21534
+2000    12628
+2004     9474
+2008     9474
+2012     9474
+2016     9474
+
+[year] column 'candidate': 19 distinct values
+candidate
+OTHER                27548
+DONALD J TRUMP       10303
+BARACK OBAMA          6316
+GEORGE W. BUSH        6315
+KAMALA D HARRIS       5186
+JOSEPH R BIDEN JR     5117
+CHASE OLIVER          5084
+JO JORGENSEN          4955
+JOHN KERRY            3158
+JOHN MCCAIN           3158
+MITT ROMNEY           3158
+DONALD TRUMP          3158
+HILLARY CLINTON       3158
+AL GORE               3157
+RALPH NADER           3157
+
+[year] column 'candidatevotes': 22,108 distinct values
+candidatevotes
+0.0     3908
+1.0      854
+2.0      693
+3.0      632
+4.0      525
+5.0      523
+7.0      463
+6.0      459
+9.0      447
+8.0      441
+13.0     408
+11.0     373
+10.0     371
+12.0     366
+14.0     360
+
+[office] column 'office': 1 distinct values
+office
+US PRESIDENT    94151
+
+[party] column 'party': 6 distinct values
+party
+DEMOCRAT       26092
+REPUBLICAN     26092
+OTHER          25392
+LIBERTARIAN    10039
+GREEN           6035
+NaN              501
+
+[name] column 'county_name': 1,921 distinct values
+county_name
+WASHINGTON    929
+FRANKLIN      741
+JEFFERSON     735
+JACKSON       702
+LINCOLN       688
+UNION         602
+MADISON       588
+MONTGOMERY    564
+MARION        527
+CLAY          524
+MONROE        486
+WAYNE         468
+GREENE        442
+LEE           439
+GRANT         437
+
+[name] column 'candidate': 19 distinct values
+candidate
+OTHER                27548
+DONALD J TRUMP       10303
+BARACK OBAMA          6316
+GEORGE W. BUSH        6315
+KAMALA D HARRIS       5186
+JOSEPH R BIDEN JR     5117
+CHASE OLIVER          5084
+JO JORGENSEN          4955
+JOHN KERRY            3158
+JOHN MCCAIN           3158
+MITT ROMNEY           3158
+DONALD TRUMP          3158
+HILLARY CLINTON       3158
+AL GORE               3157
+RALPH NADER           3157
+
+[name] column 'candidatevotes': 22,108 distinct values
+candidatevotes
+0.0     3908
+1.0      854
+2.0      693
+3.0      632
+4.0      525
+5.0      523
+7.0      463
+6.0      459
+9.0      447
+8.0      441
+13.0     408
+11.0     373
+10.0     371
+12.0     366
+14.0     360
+================================================================================
+mit_countypres_dataverse_files.zip::sources-president.tab: 51 rows x 5 columns
+--------------------------------------------------------------------------------
+State                str
+Source               str
+Is certified?        str
+notes                str
+missing votes?    object
+
+First 3 rows:
+                                                                        0                                                                                                        1                                                                        2
+State                                                                  AK                                                                                                       AL                                                                       AR
+Source          https://www.elections.alaska.gov/results/20GENR/index.php  https://www.sos.alabama.gov/sites/default/files/election-2020/Final%20Canvass%20of%20Results-Merged.pdf  https://results.enr.clarityelections.com/AR/106124/web.264614/#/summary
+Is certified?                                                         yes                                                                                                      yes                                                                 official
+notes                                                                 NaN                                                                                             final canvas                                                               scytl site
+missing votes?                                                        NaN                                                                                                      NaN                                                                     True
+================================================================================
+mit_house_dataverse_files.zip::1976-2024-house.tab: 33,805 rows x 20 columns
+--------------------------------------------------------------------------------
+year                Int64
+state                 str
+state_po              str
+state_fips          Int64
+state_cen             str
+state_ic              str
+office                str
+district            Int64
+stage                 str
+runoff            boolean
+special           boolean
+candidate             str
+party                 str
+writein           boolean
+mode                  str
+candidatevotes      Int64
+totalvotes          Int64
+unofficial        boolean
+version               str
+fusion_ticket     boolean
+
+First 3 rows:
+                             0             1         2
+year                      1976          1976      1976
+state                  ALABAMA       ALABAMA   ALABAMA
+state_po                    AL            AL        AL
+state_fips                   1             1         1
+state_cen                   63            63        63
+state_ic                    41            41        41
+office                US HOUSE      US HOUSE  US HOUSE
+district                     1             1         1
+stage                      GEN           GEN       GEN
+runoff                   False         False     False
+special                  False         False     False
+candidate       BILL DAVENPORT  JACK EDWARDS   WRITEIN
+party                 DEMOCRAT    REPUBLICAN       NaN
+writein                  False         False      True
+mode                     TOTAL         TOTAL     TOTAL
+candidatevotes           58906         98257         7
+totalvotes              157170        157170    157170
+unofficial               False         False     False
+version               20250910      20250910  20250910
+fusion_ticket            False         False     False
+
+[year] column 'year': 25 distinct values
+year
+1996    1660
+2000    1608
+1992    1524
+2010    1500
+2020    1467
+2016    1440
+2002    1433
+2012    1427
+2008    1381
+2006    1374
+1998    1373
+2018    1359
+2014    1357
+2024    1353
+2022    1349
+
+[year] column 'candidate': 16,975 distinct values
+candidate
+WRITEIN                            2667
+OTHER                               420
+BLANK VOTE/SCATTERING               373
+SCATTERING                           68
+BLANK VOTE                           65
+VOID                                 55
+UNDERVOTES                           54
+BLANK VOTE/VOID VOTE/SCATTERING      54
+BLANK                                54
+CHARLES B RANGEL                     47
+PETER T KING                         42
+GARY L ACKERMAN                      35
+ELIOT L ENGEL                        35
+CAROLYN B MALONEY                    34
+JERROLD NADLER                       29
+
+[year] column 'candidatevotes': 26,656 distinct values
+candidatevotes
+1     326
+2     108
+3     108
+4      78
+5      76
+7      63
+8      62
+9      60
+6      55
+10     50
+13     45
+11     43
+12     41
+20     37
+17     37
+
+[office] column 'office': 1 distinct values
+office
+US HOUSE    33805
+
+[party] column 'party': 500 distinct values
+party
+DEMOCRAT             10330
+REPUBLICAN           10132
+NaN                   4094
+LIBERTARIAN           2841
+INDEPENDENT           1254
+CONSERVATIVE           690
+GREEN                  543
+NATURAL LAW            371
+WORKING FAMILIES       295
+LIBERAL                266
+INDEPENDENCE           242
+RIGHT TO LIFE          225
+REFORM                 173
+PEACE AND FREEDOM      165
+CONSTITUTION           161
+
+[writein] column 'writein': 2 distinct values
+writein
+False    30956
+True      2849
+
+[special] column 'special': 2 distinct values
+special
+False    33715
+True        90
+
+[stage] column 'stage': 2 distinct values
+stage
+GEN    33745
+PRI       60
+
+[stage] column 'runoff': 3 distinct values
+runoff
+False    25141
+<NA>      8656
+True         8
+
+[name] column 'candidate': 16,975 distinct values
+candidate
+WRITEIN                            2667
+OTHER                               420
+BLANK VOTE/SCATTERING               373
+SCATTERING                           68
+BLANK VOTE                           65
+VOID                                 55
+UNDERVOTES                           54
+BLANK VOTE/VOID VOTE/SCATTERING      54
+BLANK                                54
+CHARLES B RANGEL                     47
+PETER T KING                         42
+GARY L ACKERMAN                      35
+ELIOT L ENGEL                        35
+CAROLYN B MALONEY                    34
+JERROLD NADLER                       29
+
+[name] column 'candidatevotes': 26,656 distinct values
+candidatevotes
+1     326
+2     108
+3     108
+4      78
+5      76
+7      63
+8      62
+9      60
+6      55
+10     50
+13     45
+11     43
+12     41
+20     37
+17     37
+================================================================================
+1976-2024-president.csv: 4,822 rows x 15 columns
+--------------------------------------------------------------------------------
+year                  int64
+state                   str
+state_po                str
+state_fips            int64
+state_cen             int64
+state_ic            float64
+office                  str
+candidate               str
+party_detailed          str
+writein              object
+candidatevotes        int64
+totalvotes            int64
+version                 str
+notes               float64
+party_simplified        str
+
+First 3 rows:
+                                        0              1             2
+year                                 1976           1976          1976
+state                             ALABAMA        ALABAMA       ALABAMA
+state_po                               AL             AL            AL
+state_fips                              1              1             1
+state_cen                              63             63            63
+state_ic                             41.0           41.0          41.0
+office                       US PRESIDENT   US PRESIDENT  US PRESIDENT
+candidate         BUBAR, BENJAMIN ""BEN""  CARTER, JIMMY  FORD, GERALD
+party_detailed                PROHIBITION       DEMOCRAT    REPUBLICAN
+writein                             False          False         False
+candidatevotes                       6669         659170        504070
+totalvotes                        1182850        1182850       1182850
+version                          20210113       20210113      20210113
+notes                                 NaN            NaN           NaN
+party_simplified                    OTHER       DEMOCRAT    REPUBLICAN
+
+[year] column 'year': 13 distinct values
+year
+2020    547
+2024    535
+1992    370
+2000    369
+1996    368
+1980    364
+2008    351
+2016    345
+1976    332
+1984    323
+2004    317
+2012    316
+1988    285
+
+[year] column 'candidate': 424 distinct values
+candidate
+NaN                  287
+TRUMP, DONALD J.     155
+NADER, RALPH         137
+STEIN, JILL          112
+OTHER                106
+BUSH, GEORGE H.W.    105
+REAGAN, RONALD       104
+CLINTON, BILL        104
+BUSH, GEORGE W.      104
+OBAMA, BARACK H.     104
+CARTER, JIMMY        103
+PEROT, ROSS           98
+BROWNE, HARRY         96
+JOHNSON, GARY         96
+HAGELIN, JOHN         90
+
+[year] column 'candidatevotes': 4,081 distinct values
+candidatevotes
+1      39
+0      38
+2      28
+3      20
+4      19
+5      16
+7      11
+8      11
+6      11
+13      9
+12      9
+10      8
+9       7
+22      5
+142     5
+
+[office] column 'office': 1 distinct values
+office
+US PRESIDENT    4822
+
+[party] column 'party_detailed': 218 distinct values
+party_detailed
+REPUBLICAN             661
+DEMOCRAT               639
+NaN                    623
+LIBERTARIAN            572
+INDEPENDENT            443
+GREEN                  230
+SOCIALIST WORKERS      152
+CONSTITUTION PARTY     149
+NATURAL LAW             94
+REFORM PARTY            90
+COMMUNIST PARTY USE     64
+NEW ALLIANCE            62
+CITIZENS                49
+ALLIANCE                45
+WORKERS WORLD           44
+
+[party] column 'party_simplified': 5 distinct values
+party_simplified
+OTHER          2909
+DEMOCRAT        666
+REPUBLICAN      664
+LIBERTARIAN     582
+NaN               1
+
+[writein] column 'writein': 3 distinct values
+writein
+False    4124
+True      695
+NaN         3
+
+[name] column 'candidate': 424 distinct values
+candidate
+NaN                  287
+TRUMP, DONALD J.     155
+NADER, RALPH         137
+STEIN, JILL          112
+OTHER                106
+BUSH, GEORGE H.W.    105
+REAGAN, RONALD       104
+CLINTON, BILL        104
+BUSH, GEORGE W.      104
+OBAMA, BARACK H.     104
+CARTER, JIMMY        103
+PEROT, ROSS           98
+BROWNE, HARRY         96
+JOHNSON, GARY         96
+HAGELIN, JOHN         90
+
+[name] column 'candidatevotes': 4,081 distinct values
+candidatevotes
+1      39
+0      38
+2      28
+3      20
+4      19
+5      16
+7      11
+8      11
+6      11
+13      9
+12      9
+10      8
+9       7
+22      5
+142     5
+codebook-us-president.md: skipped (not a data file)
+================================================================================
+mit_senate_dataverse_files.zip::1976-2024-senate-state.tab: 3,945 rows x 19 columns
+--------------------------------------------------------------------------------
+year                  int64
+state                   str
+state_po                str
+state_fips            int64
+state_cen           float64
+state_ic              int64
+office                  str
+district                str
+stage                   str
+special                bool
+candidate               str
+party_detailed          str
+writein                bool
+mode                    str
+candidatevotes      float64
+totalvotes          float64
+unofficial             bool
+version                 str
+party_simplified        str
+
+First 3 rows:
+                              0            1                 2
+year                       1976         1976              1976
+state                   ARIZONA      ARIZONA           ARIZONA
+state_po                     AZ           AZ                AZ
+state_fips                    4            4                 4
+state_cen                  86.0         86.0              86.0
+state_ic                     61           61                61
+office                US SENATE    US SENATE         US SENATE
+district              statewide    statewide         statewide
+stage                       gen          gen               gen
+special                   False        False             False
+candidate         ALLAN NORWITZ    BOB FIELD  DENNIS DECONCINI
+party_detailed      LIBERTARIAN  INDEPENDENT          DEMOCRAT
+writein                   False        False             False
+mode                      total        total             total
+candidatevotes           7310.0      10765.0          400334.0
+totalvotes             741210.0     741210.0          741210.0
+unofficial                False        False             False
+version                20210114     20210114          20210114
+party_simplified    LIBERTARIAN        OTHER          DEMOCRAT
+
+[year] column 'year': 26 distinct values
+year
+2010    242
+2016    221
+2020    204
+2012    190
+2014    187
+2000    183
+2022    168
+1992    165
+2004    165
+2006    160
+1994    157
+1996    155
+1998    152
+2018    152
+2024    148
+
+[year] column 'candidate': 2,585 distinct values
+candidate
+NaN                        423
+OTHER                       92
+SCATTER                     26
+BLANK VOTE/SCATTERING       20
+CHARLES E. SCHUMER          13
+BLANK VOTE                  12
+OVER VOTE                    9
+KIRSTEN E. GILLIBRAND        9
+ORRIN G. HATCH               7
+THAD COCHRAN                 7
+JERRY LEVY                   7
+RICHARD G. LUGAR             6
+EDWARD M. KENNEDY            6
+DANIEL PATRICK MOYNIHAN      6
+ROBERT C. BYRD               6
+
+[year] column 'candidatevotes': 3,649 distinct values
+candidatevotes
+1.0     16
+7.0     13
+10.0    11
+5.0     11
+12.0    10
+4.0      9
+18.0     8
+9.0      8
+13.0     7
+14.0     7
+2.0      7
+6.0      7
+42.0     6
+23.0     6
+21.0     6
+
+[office] column 'office': 1 distinct values
+office
+US SENATE    3945
+
+[party] column 'party_detailed': 196 distinct values
+party_detailed
+REPUBLICAN           871
+DEMOCRAT             840
+NaN                  627
+LIBERTARIAN          393
+INDEPENDENT          301
+GREEN                 98
+SOCIALIST WORKERS     65
+OTHER                 55
+NATURAL LAW           47
+CONSTITUTION          42
+REFORM                36
+NONE                  27
+CONSERVATIVE          26
+AMERICAN              24
+DEMOCRATIC            23
+
+[party] column 'party_simplified': 5 distinct values
+party_simplified
+OTHER          1796
+DEMOCRAT        878
+REPUBLICAN      875
+LIBERTARIAN     394
+NaN               2
+
+[writein] column 'writein': 2 distinct values
+writein
+False    3473
+True      472
+
+[special] column 'special': 2 distinct values
+special
+False    3788
+True      157
+
+[stage] column 'stage': 5 distinct values
+stage
+gen           3616
+GEN            314
+pre              9
+runoff           4
+GEN RUNOFF       2
+
+[name] column 'candidate': 2,585 distinct values
+candidate
+NaN                        423
+OTHER                       92
+SCATTER                     26
+BLANK VOTE/SCATTERING       20
+CHARLES E. SCHUMER          13
+BLANK VOTE                  12
+OVER VOTE                    9
+KIRSTEN E. GILLIBRAND        9
+ORRIN G. HATCH               7
+THAD COCHRAN                 7
+JERRY LEVY                   7
+RICHARD G. LUGAR             6
+EDWARD M. KENNEDY            6
+DANIEL PATRICK MOYNIHAN      6
+ROBERT C. BYRD               6
+
+[name] column 'candidatevotes': 3,649 distinct values
+candidatevotes
+1.0     16
+7.0     13
+10.0    11
+5.0     11
+12.0    10
+4.0      9
+18.0     8
+9.0      8
+13.0     7
+14.0     7
+2.0      7
+6.0      7
+42.0     6
+23.0     6
+21.0     6
+================================================================================
+mit_senate_dataverse_files.zip::sources-senate.tab: 34 rows x 5 columns
+--------------------------------------------------------------------------------
+State                str
+Source               str
+Is certified?        str
+notes                str
+missing votes?    object
+
+First 3 rows:
+                                                                        0                                                                                                        1                                                                        2
+State                                                                  AK                                                                                                       AL                                                                       AR
+Source          https://www.elections.alaska.gov/results/20GENR/index.php  https://www.sos.alabama.gov/sites/default/files/election-2020/Final%20Canvass%20of%20Results-Merged.pdf  https://results.enr.clarityelections.com/AR/106124/web.264614/#/summary
+Is certified?                                                         yes                                                                                                      yes                                                               unofficial
+notes                                                                 NaN                                                                                             final canvas                                                               scytl site
+missing votes?                                                        NaN                                                                                                      NaN                                                                     True

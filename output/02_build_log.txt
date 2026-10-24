@@ -1,0 +1,23 @@
+DECISION: - **2026-10-24 · build/house:** Kept regular general elections only: dropped 98 of 33,805 rows (primaries, runoffs, specials). *Why:* Spec covers general elections; specials have unusual timing and turnout.
+DECISION: - **2026-10-24 · build/house:** Dropped 2,844 write-in rows and 1,280 placeholder rows (OTHER, BLANK, SCATTERING, OVER/UNDERVOTES...). They are excluded from contest vote totals too. *Why:* Spec: exclude write-ins as MIT marks them; placeholders are not candidates.
+DECISION: - **2026-10-24 · build/house:** Combined fusion-ticket lines: 29,583 rows -> 28,093 candidates. *Why:* Spec outcome is candidate vote share, so a candidate's votes on all party lines are summed.
+DECISION: - **2026-10-24 · build/senate:** Kept general elections (stage 'gen'/'GEN'), dropped 15 of 3,945 rows (primaries, runoffs). Senate special elections are KEPT (as separate contests) and flagged. *Why:* Senate specials are mostly held on the November general-election ballot, unlike House specials.
+DECISION: - **2026-10-24 · build/senate:** Dropped 469 write-in rows and 186 placeholder rows. *Why:* Same rule as House.
+DECISION: - **2026-10-24 · build/federal:** Incumbency inferred: a candidate is the incumbent if they won the same seat in the previous House election (2 years) or within the previous 6 years for Senate. Match on first name + surname in the same district (any district in the state in redistricting years), or on surname + party in the same district (for nickname changes). A looser first-initial rule was tried first and rejected: it produced false matches (e.g. challenger John T. Anderson vs incumbent John B. Anderson). *Why:* MIT files have no incumbency flag; spec says infer it and say so. Misses appointed senators and members first elected in a special election.
+DECISION: - **2026-10-24 · build/local:** Office types ['City Council', 'Mayor', 'School Board'] coded nonpartisan; County Legislature, County Executive, Sheriff and Prosecutor coded partisan. *Why:* HKS has no ballot-type flag (checked readme). Office type is the agreed proxy; it is wrong for some states (e.g. partisan city elections in some places), stated as a limitation.
+DECISION: - **2026-10-24 · build/local:** Vote share recomputed as votes / sum of votes in the contest, not taken from HKS's vote_share column. *Why:* HKS vote_share does not always sum to 1 within a contest.
+
+Candidates and contests by source:
+        candidates  contests  uncontested  multiseat
+source                                              
+house        28093     10860          783          0
+local       126599     57205        19821      24743
+senate        3215       857           12          0
+
+Incumbents per contested federal race (check: should be mostly 0 or 1):
+incumbent   0.0   1.0  2.0
+source                    
+house      1793  8265   19
+senate      286   557    2
+
+Saved 157,907 rows to /home/user/data/processed/candidates.parquet

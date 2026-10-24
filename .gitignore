@@ -1,0 +1,7 @@
+# Python environment and caches
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Rebuilt by the scripts in src/, so not stored
+data/processed/
