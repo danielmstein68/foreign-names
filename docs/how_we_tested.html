@@ -1,0 +1,442 @@
+<title>Surname Penalty Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single reading column (~70ch) that widens for the diagrams; ballot-paper neutrals, civic-blue ink. */
+:root {
+  --bg: #f3f5f2;
+  --surface: #ffffff;
+  --fg: #18212c;
+  --muted: #5b6673;
+  --line: #cfd6d3;
+  --accent: #24548a;
+  --accent-soft: #e2ebf4;
+  --neg: #b4472c;
+  --pos: #2f7a55;
+  --c-hisp: #c0661f;
+  --c-black: #6b4fa6;
+  --c-asian: #1f8a8a;
+  --c-germ: #24548a;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12171d; --surface: #1a2129; --fg: #e4e9ee; --muted: #9aa6b2; --line: #2e3842;
+    --accent: #7fb0e3; --accent-soft: #1d2b3a; --neg: #e8866a; --pos: #6cc49a;
+    --c-hisp: #eb9a55; --c-black: #ab95e6; --c-asian: #5cc8c8; --c-germ: #7fb0e3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12171d; --surface: #1a2129; --fg: #e4e9ee; --muted: #9aa6b2; --line: #2e3842;
+  --accent: #7fb0e3; --accent-soft: #1d2b3a; --neg: #e8866a; --pos: #6cc49a;
+  --c-hisp: #eb9a55; --c-black: #ab95e6; --c-asian: #5cc8c8; --c-germ: #7fb0e3;
+  color-scheme: dark;
+}
+
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page {
+  max-width: 980px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  display: grid; gap: 56px;
+}
+.prose { max-width: 68ch; }
+h1, h2 { font-family: var(--font-display); font-weight: 650; text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 2.9rem); }
+h2 { font-size: clamp(1.45rem, 3.2vw, 1.85rem); }
+h3 { font-size: 1rem; font-weight: 600; margin: 0; }
+p { margin: 0; }
+.eyebrow { font-family: var(--font-data); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+section { display: grid; gap: 18px; }
+.lede { font-size: 1.1rem; color: var(--muted); max-width: 64ch; }
+.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+figure { margin: 0; display: grid; gap: 10px; }
+figcaption { font-size: 0.875rem; color: var(--muted); max-width: 72ch; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+svg { display: block; max-width: 100%; height: auto; }
+.wide-svg { min-width: 720px; }
+.svg-text { font-family: var(--font-body); }
+.svg-data { font-family: var(--font-data); }
+
+/* Header facts */
+.facts { display: flex; flex-wrap: wrap; gap: 12px 32px; padding-top: 6px; border-top: 1px solid var(--line); }
+.fact { display: grid; gap: 2px; min-width: 0; }
+.fact .num { font-size: 1.35rem; font-weight: 500; }
+.fact span:last-child { font-size: 0.82rem; color: var(--muted); }
+
+/* Design cards */
+.designs { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.design { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.design .tag { font-family: var(--font-data); font-size: 0.75rem; color: var(--accent); letter-spacing: 0.05em; }
+.design p { font-size: 0.92rem; }
+.design .where { font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+
+/* Quadrants */
+.quad { display: grid; grid-template-columns: auto 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.quad > div { background: var(--surface); padding: 14px; min-width: 0; }
+.quad .axis { background: var(--bg); font-size: 0.8rem; color: var(--muted); display: flex; align-items: center; }
+.quad .corner { background: var(--bg); }
+.quad .col-h { background: var(--bg); font-size: 0.8rem; color: var(--muted); }
+.cell-name { font-weight: 600; font-size: 0.95rem; }
+.cell-ex { font-size: 0.82rem; color: var(--muted); }
+.cell-est { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-size: 1.05rem; margin-top: 6px; }
+.cell-ci { font-family: var(--font-data); font-size: 0.78rem; color: var(--muted); }
+.base { color: var(--muted); font-style: italic; }
+.neg { color: var(--neg); }
+.pos { color: var(--pos); }
+
+/* Timeline of decisions */
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; border-left: 2px solid var(--line); }
+.timeline li { position: relative; padding: 0 0 18px 22px; display: grid; gap: 3px; }
+.timeline li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent); }
+.timeline li.after::before { border-color: var(--neg); }
+.badge { justify-self: start; font-family: var(--font-data); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; }
+.badge.before { background: var(--accent-soft); color: var(--accent); }
+.badge.after { background: color-mix(in srgb, var(--neg) 14%, transparent); color: var(--neg); }
+.timeline .what { font-weight: 600; font-size: 0.95rem; }
+.timeline .detail { font-size: 0.88rem; color: var(--muted); max-width: 66ch; }
+
+/* Tier table */
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 500; color: var(--muted); font-size: 0.8rem; }
+td.num, th.num { text-align: right; }
+
+.findings { display: grid; gap: 12px; padding: 0; margin: 0; list-style: none; max-width: 70ch; }
+.findings li { display: grid; grid-template-columns: 1.6rem 1fr; gap: 8px; }
+.findings .k { font-family: var(--font-data); color: var(--accent); }
+.caveats { font-size: 0.92rem; color: var(--muted); max-width: 70ch; display: grid; gap: 6px; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+@media (max-width: 560px) {
+  .quad { grid-template-columns: 1fr; }
+  .quad .corner, .quad .col-h { display: none; }
+  .quad .axis { padding: 8px 14px; }
+}
+</style>
+
+<div class="page">
+
+  <header style="display:grid; gap:16px">
+    <span class="eyebrow">Daniel Stein · econ project · October 2026</span>
+    <h1>How we tested whether surnames cost candidates votes</h1>
+    <p class="lede">Every test compares candidates who stand in the same race, so place, year and turnout cancel out. This page traces the data from raw files to results, shows which rules were fixed before any results were seen, and shows the two follow-up tests that explained the surprises.</p>
+    <div class="facts">
+      <div class="fact"><span class="num">157,907</span><span>candidates loaded</span></div>
+      <div class="fact"><span class="num">98,749</span><span>in the main sample</span></div>
+      <div class="fact"><span class="num">39,804</span><span>contested single-seat races</span></div>
+      <div class="fact"><span class="num">1976–2024</span><span>years covered</span></div>
+    </div>
+  </header>
+
+  <!-- 1. Pipeline -->
+  <section>
+    <span class="eyebrow">Step 1 to 4</span>
+    <h2>From raw files to scored candidates</h2>
+    <figure>
+      <div class="scroll">
+        <svg class="wide-svg" viewBox="0 0 980 330" role="img" aria-label="Pipeline: three election files are merged into one candidate table, each surname gets a whiteness score from the Census and a foreignness score from ethnicolr, a checkpoint counts candidates in each group without vote data, then within-race tests run with extra baseline data for specific tests.">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <g fill="none" stroke="currentColor" stroke-width="1.2" style="color: var(--line)">
+            <rect x="10" y="20" width="180" height="60" rx="5" fill="var(--surface)"/>
+            <rect x="10" y="100" width="180" height="60" rx="5" fill="var(--surface)"/>
+            <rect x="10" y="180" width="180" height="60" rx="5" fill="var(--surface)"/>
+            <rect x="250" y="100" width="180" height="60" rx="5" fill="var(--surface)"/>
+            <rect x="490" y="60" width="190" height="60" rx="5" fill="var(--surface)"/>
+            <rect x="490" y="140" width="190" height="60" rx="5" fill="var(--surface)"/>
+            <rect x="740" y="20" width="220" height="60" rx="5" fill="var(--accent-soft)"/>
+            <rect x="740" y="140" width="220" height="60" rx="5" fill="var(--surface)" style="stroke: var(--accent)" stroke-width="1.8"/>
+            <rect x="740" y="250" width="220" height="60" rx="5" fill="var(--surface)" stroke-dasharray="4 3"/>
+          </g>
+          <g style="color: var(--muted)" stroke="currentColor" stroke-width="1.3" fill="none">
+            <path d="M190 50 C 220 50, 220 120, 248 125" marker-end="url(#arr)"/>
+            <path d="M190 130 L 248 130" marker-end="url(#arr)"/>
+            <path d="M190 210 C 220 210, 220 140, 248 135" marker-end="url(#arr)"/>
+            <path d="M430 125 C 460 125, 460 90, 488 90" marker-end="url(#arr)"/>
+            <path d="M430 135 C 460 135, 460 170, 488 170" marker-end="url(#arr)"/>
+            <path d="M680 90 C 710 90, 710 50, 738 50" marker-end="url(#arr)"/>
+            <path d="M680 90 C 712 90, 712 165, 738 165" marker-end="url(#arr)"/>
+            <path d="M680 170 L 738 170" marker-end="url(#arr)"/>
+            <path d="M850 250 L 850 202" marker-end="url(#arr)"/>
+            <path d="M850 80 L 850 138" stroke-dasharray="3 3"/>
+          </g>
+          <g class="svg-text" fill="var(--fg)" font-size="13">
+            <text x="22" y="44" font-weight="600">HKS local elections</text>
+            <text x="22" y="64" class="svg-data" font-size="11" fill="var(--muted)">1989–2021 · 126,599 rows</text>
+            <text x="22" y="124" font-weight="600">MIT House returns</text>
+            <text x="22" y="144" class="svg-data" font-size="11" fill="var(--muted)">1976–2024 · 33,805 rows</text>
+            <text x="22" y="204" font-weight="600">MIT Senate returns</text>
+            <text x="22" y="224" class="svg-data" font-size="11" fill="var(--muted)">1976–2024 · 3,945 rows</text>
+
+            <text x="262" y="124" font-weight="600">One candidate table</text>
+            <text x="262" y="144" class="svg-data" font-size="11" fill="var(--muted)">157,907 candidates</text>
+
+            <text x="502" y="84" font-weight="600">Whiteness (Census 2010)</text>
+            <text x="502" y="104" class="svg-data" font-size="11" fill="var(--muted)">% white, Hispanic, Black, Asian</text>
+            <text x="502" y="164" font-weight="600">Foreignness (ethnicolr)</text>
+            <text x="502" y="184" class="svg-data" font-size="11" fill="var(--muted)">P(origin is not British)</text>
+
+            <text x="752" y="44" font-weight="600">Checkpoint</text>
+            <text x="752" y="64" class="svg-data" font-size="11" fill="var(--muted)">2×2 counts · no vote data</text>
+            <text x="752" y="164" font-weight="600" fill="var(--accent)">Within-race tests</text>
+            <text x="752" y="184" class="svg-data" font-size="11" fill="var(--muted)">contest fixed effects</text>
+            <text x="752" y="274" font-weight="600">Baselines for some tests</text>
+            <text x="752" y="294" class="svg-data" font-size="11" fill="var(--muted)">president vote · demographics · ancestry</text>
+          </g>
+          <g class="svg-text" font-size="11" fill="var(--muted)">
+            <text x="219" y="262" text-anchor="middle">dropped: write-ins,</text>
+            <text x="219" y="277" text-anchor="middle">placeholders, specials,</text>
+            <text x="219" y="292" text-anchor="middle">uncontested races</text>
+            <text x="585" y="230" text-anchor="middle">91% of names get both scores</text>
+            <text x="862" y="114">approved before</text>
+            <text x="862" y="128">any regression</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Three election files become one table with the same columns. Each surname gets two independent scores. The checkpoint counts how many candidates fall in each whiteness × foreignness group before anyone looks at votes. Only then do the regressions run, some of them with an extra baseline file.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2. Within-race comparison -->
+  <section>
+    <span class="eyebrow">The one idea behind every test</span>
+    <h2>Candidates are only compared with their opponents</h2>
+    <figure>
+      <div class="scroll">
+        <svg class="wide-svg" viewBox="0 0 900 230" role="img" aria-label="Two races drawn as boxes. Arrows compare candidates inside each race. A crossed-out dashed arrow between the races shows they are never compared, because district, year and turnout differ.">
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <g fill="var(--surface)" stroke="var(--line)" stroke-width="1.2">
+            <rect x="20" y="30" width="330" height="170" rx="6"/>
+            <rect x="550" y="30" width="330" height="170" rx="6"/>
+          </g>
+          <g class="svg-text" font-size="12" fill="var(--muted)">
+            <text x="36" y="54" class="svg-data">RACE A · one city, one year</text>
+            <text x="566" y="54" class="svg-data">RACE B · another place and year</text>
+          </g>
+          <g fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.2">
+            <rect x="44" y="120" width="120" height="44" rx="4"/>
+            <rect x="206" y="120" width="120" height="44" rx="4"/>
+            <rect x="574" y="120" width="120" height="44" rx="4"/>
+            <rect x="736" y="120" width="120" height="44" rx="4"/>
+          </g>
+          <g class="svg-text" font-size="14" font-weight="600" fill="var(--fg)" text-anchor="middle">
+            <text x="104" y="147">Smith</text>
+            <text x="266" y="147">Garcia</text>
+            <text x="634" y="147">Hansen</text>
+            <text x="796" y="147">Miller</text>
+          </g>
+          <g stroke="var(--accent)" stroke-width="1.4" fill="none" style="color: var(--accent)">
+            <path d="M166 142 L 204 142" marker-end="url(#arr2)" marker-start="url(#arr2)"/>
+            <path d="M696 142 L 734 142" marker-end="url(#arr2)" marker-start="url(#arr2)"/>
+          </g>
+          <g class="svg-text" font-size="11" fill="var(--accent)" text-anchor="middle">
+            <text x="185" y="104">compared</text>
+            <text x="715" y="104">compared</text>
+          </g>
+          <g stroke="var(--neg)" stroke-width="1.4" fill="none">
+            <path d="M350 115 L 548 115" stroke-dasharray="5 4"/>
+            <path d="M440 105 L 458 125 M458 105 L 440 125"/>
+          </g>
+          <g class="svg-text" font-size="11" fill="var(--neg)" text-anchor="middle">
+            <text x="449" y="92">never compared</text>
+            <text x="449" y="150" fill="var(--muted)">different district, year,</text>
+            <text x="449" y="165" fill="var(--muted)">turnout and electorate</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>A "contest fixed effect" gives each race its own baseline. Anything shared by everyone on the same ballot drops out, so a name's effect is measured only against the other names in that race. The win model (conditional logit) uses the same logic.</figcaption>
+    </figure>
+  </section>
+
+  <!-- 3. Four designs -->
+  <section>
+    <span class="eyebrow">Step 5</span>
+    <h2>Four ways to run the comparison</h2>
+    <p class="prose">Partisan races needed extra care. Democrats run more candidates with minority-coded names, and they tend to run in Democratic districts, so a plain party control would make those names look like an advantage.</p>
+    <div class="designs">
+      <div class="design">
+        <span class="tag">A · VOTE SHARE</span>
+        <h3>The spec model</h3>
+        <p>Candidate's share of the vote on name scores, within each race. Controls for incumbency, plus party in partisan races.</p>
+        <p class="where">All samples, plus pooled</p>
+      </div>
+      <div class="design">
+        <span class="tag">B · OVERPERFORMANCE</span>
+        <h3>Against the party's usual level</h3>
+        <p>Vote share minus the party's presidential vote in the same state or county. This removes how red or blue the place is.</p>
+        <p class="where">Senate, local partisan (2000+)</p>
+      </div>
+      <div class="design">
+        <span class="tag">C · SWING</span>
+        <h3>Same district over time</h3>
+        <p>The Democratic two-party share in a district, compared across elections as the gap between the two candidates' name scores changes. Each district is its own baseline.</p>
+        <p class="where">House, Senate</p>
+      </div>
+      <div class="design">
+        <span class="tag">D · WINNING</span>
+        <h3>Who wins the race</h3>
+        <p>Conditional logit: the chance that each candidate is the winner, comparing only candidates in the same race. Reported as odds ratios.</p>
+        <p class="where">All samples</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Quadrants -->
+  <section>
+    <span class="eyebrow">Main result</span>
+    <h2>Within the same race, the four groups do about the same</h2>
+    <div class="quad" role="table" aria-label="Pooled within-race effect of each name group compared with white and not foreign names, in percentage points of vote share">
+      <div class="corner" role="presentation"></div>
+      <div class="col-h" role="columnheader">Not foreign</div>
+      <div class="col-h" role="columnheader">Foreign</div>
+
+      <div class="axis" role="rowheader">White-coded</div>
+      <div role="cell">
+        <div class="cell-name">White &amp; not foreign</div>
+        <div class="cell-ex">Smith, Miller, Murphy</div>
+        <div class="cell-est base">baseline</div>
+      </div>
+      <div role="cell">
+        <div class="cell-name">White &amp; foreign</div>
+        <div class="cell-ex">Hansen, Wagner, Weber</div>
+        <div class="cell-est">−0.3</div>
+        <div class="cell-ci">95% CI −0.8 to +0.1</div>
+      </div>
+
+      <div class="axis" role="rowheader">Non-white-coded</div>
+      <div role="cell">
+        <div class="cell-name">Non-white &amp; not foreign</div>
+        <div class="cell-ex">Johnson, Williams, Jones</div>
+        <div class="cell-est">+0.4</div>
+        <div class="cell-ci">95% CI −0.2 to +0.9</div>
+      </div>
+      <div role="cell">
+        <div class="cell-name">Non-white &amp; foreign</div>
+        <div class="cell-ex">Garcia, Lee, Rodriguez</div>
+        <div class="cell-est">0.0</div>
+        <div class="cell-ci">95% CI −0.8 to +0.8</div>
+      </div>
+    </div>
+    <p class="prose" style="font-size:0.92rem; color: var(--muted)">Percentage points of vote share compared with a white, Anglo-named opponent in the same race. Pooled over all <span class="num">98,749</span> candidates, main foreign rule. Two results did stand out: Hansen-type names lose about <span class="num neg">1.7</span> points in nonpartisan local races, and the averages above hid strong differences by place.</p>
+  </section>
+
+  <!-- 5. Follow-up tests -->
+  <section>
+    <span class="eyebrow">Follow-up tests</span>
+    <h2>The penalty depends on who the voters are</h2>
+    <p class="prose">Two follow-ups asked whether a name does better where more residents share its background. The co-ethnic test used Hispanic, Black and Asian population shares. The ancestry-bloc test used Census ancestry for German, Nordic, French, Italian and Eastern European names. Both point the same way.</p>
+    <figure>
+      <div class="scroll">
+        <svg viewBox="0 0 700 360" role="img" aria-label="Fitted lines from local races: each name group loses votes where few residents share its background and gains where many do. Black-coded names go from about minus 4.4 points at zero percent to plus 3.8 at fifty percent; German names from minus 2.8 to plus 2.5; Asian from minus 2.0 to plus 2.8; Hispanic from minus 1.6 to plus 1.3.">
+          <g stroke="var(--line)" stroke-width="1">
+            <line x1="70" y1="48" x2="570" y2="48"/>
+            <line x1="70" y1="104" x2="570" y2="104"/>
+            <line x1="70" y1="216" x2="570" y2="216"/>
+            <line x1="70" y1="272" x2="570" y2="272"/>
+          </g>
+          <line x1="70" y1="160" x2="570" y2="160" stroke="var(--muted)" stroke-width="1.3"/>
+          <g class="svg-data" font-size="11" fill="var(--muted)" text-anchor="end">
+            <text x="62" y="52">+4</text>
+            <text x="62" y="108">+2</text>
+            <text x="62" y="164">0</text>
+            <text x="62" y="220">−2</text>
+            <text x="62" y="276">−4</text>
+          </g>
+          <g class="svg-data" font-size="11" fill="var(--muted)" text-anchor="middle">
+            <text x="70" y="302">0%</text>
+            <text x="170" y="302">10%</text>
+            <text x="270" y="302">20%</text>
+            <text x="370" y="302">30%</text>
+            <text x="470" y="302">40%</text>
+            <text x="570" y="302">50%</text>
+          </g>
+          <text x="320" y="330" class="svg-text" font-size="12" fill="var(--fg)" text-anchor="middle">Share of residents who share the name's background</text>
+          <text x="16" y="160" class="svg-text" font-size="12" fill="var(--fg)" text-anchor="middle" transform="rotate(-90 16 160)">Points vs a white Anglo name</text>
+          <text x="76" y="36" class="svg-text" font-size="11" fill="var(--pos)">does better</text>
+          <text x="76" y="290" class="svg-text" font-size="11" fill="var(--neg)">does worse</text>
+
+          <g stroke-width="2.4" fill="none" stroke-linecap="round">
+            <line x1="70" y1="282.4" x2="570" y2="54.2" stroke="var(--c-black)"/>
+            <line x1="70" y1="239.2" x2="570" y2="91.4" stroke="var(--c-germ)"/>
+            <line x1="70" y1="214.9" x2="570" y2="81.3" stroke="var(--c-asian)"/>
+            <line x1="70" y1="205.6" x2="570" y2="124.9" stroke="var(--c-hisp)"/>
+          </g>
+          <g>
+            <circle cx="70" cy="282.4" r="3.5" fill="var(--c-black)"/>
+            <circle cx="70" cy="239.2" r="3.5" fill="var(--c-germ)"/>
+            <circle cx="70" cy="214.9" r="3.5" fill="var(--c-asian)"/>
+            <circle cx="70" cy="205.6" r="3.5" fill="var(--c-hisp)"/>
+          </g>
+          <g class="svg-text" font-size="12" font-weight="600">
+            <text x="578" y="56" fill="var(--c-black)">Black-coded</text>
+            <text x="578" y="78" fill="var(--c-asian)">Asian</text>
+            <text x="578" y="98" fill="var(--c-germ)">German</text>
+            <text x="578" y="129" fill="var(--c-hisp)">Hispanic</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Fitted lines from the local-race models, not raw averages. Hispanic, Black and Asian come from the co-ethnic test (surname share × population share). German comes from the ancestry-bloc test's within-group model, where all five white-ethnic groups had similar slopes of about +1 point per 10 points of shared ancestry. The left ends are projections, since few places have none of a group.</figcaption>
+    </figure>
+
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr><th>Within-race effect vs white &amp; not foreign</th><th class="num">Least diverse third</th><th class="num">Middle third</th><th class="num">Most diverse third</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Non-white &amp; foreign (Garcia)</td><td class="num neg">−2.3</td><td class="num">−1.3</td><td class="num">+0.9</td></tr>
+          <tr><td>Non-white &amp; not foreign (Johnson)</td><td class="num neg">−1.5</td><td class="num">+0.1</td><td class="num">+1.4</td></tr>
+          <tr><td>White &amp; foreign (Hansen)</td><td class="num">−0.5</td><td class="num">−0.5</td><td class="num">−0.7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="prose" style="font-size:0.92rem; color: var(--muted)">Local races split by the non-white share of residents (2–23%, 23–40%, 40–97%). Red marks results with p &lt; 0.05. Hansen's line stays flat because non-white share says nothing about how many residents have Scandinavian or German ancestry. The ancestry test measures that directly.</p>
+  </section>
+
+  <!-- 6. What was fixed when -->
+  <section>
+    <span class="eyebrow">Keeping it honest</span>
+    <h2>Which rules were fixed before seeing results</h2>
+    <ol class="timeline">
+      <li><span class="badge before">before results</span><span class="what">Predictions H1 and H2</span><span class="detail">Written in the spec: non-white and foreign names carry a large penalty (H1); foreign but white-coded names carry little or none (H2).</span></li>
+      <li><span class="badge before">before results</span><span class="what">Foreign coding rule and its sensitivity version</span><span class="detail">Anything outside British/Irish counts as foreign; the sensitivity rule also treats German, French and Nordic as not foreign.</span></li>
+      <li><span class="badge before">before results</span><span class="what">Overperformance and swing designs</span><span class="detail">Added after spotting the party-and-district problem, before any regression ran.</span></li>
+      <li><span class="badge before">before results</span><span class="what">Checkpoint and Middle Eastern / Muslim-origin flag</span><span class="detail">Cell counts and a hand-reviewed list of 242 surnames, done without vote data.</span></li>
+      <li class="after"><span class="badge after">after main results</span><span class="what">Four-group comparison and robustness checks</span><span class="detail">Contest-clustered errors, a 0/1 foreign score, open seats only, and multi-seat races.</span></li>
+      <li class="after"><span class="badge after">after main results</span><span class="what">Co-ethnic test and ancestry-bloc test</span><span class="detail">Exploratory. Each one's rules were written down before its demographic or ancestry data was loaded.</span></li>
+    </ol>
+  </section>
+
+  <!-- 7. Findings -->
+  <section>
+    <span class="eyebrow">Where it lands</span>
+    <h2>What the tests show</h2>
+    <ul class="findings">
+      <li><span class="k">1</span><span>On average, candidates in all four name groups do within about a point of a white Anglo opponent in the same race. A large average penalty is ruled out.</span></li>
+      <li><span class="k">2</span><span>That average hides a pattern: names lose votes where few residents share their background and gain where many do. This holds for Hispanic, Black and Asian surnames and for white ethnic surnames.</span></li>
+      <li><span class="k">3</span><span>Garcia-type names show no average penalty because they often run where their group is large. Hansen-type names show one because matching-ancestry blocs are usually small.</span></li>
+      <li><span class="k">4</span><span>H1 holds only in less diverse places. H2 fails in nonpartisan local races, as in the Swiss study.</span></li>
+    </ul>
+    <div class="caveats">
+      <p>These are within-race associations, not proof of what voters intend. Candidate quality, money and decisions about where to run can still differ by name.</p>
+      <p>Surname scores measure what a name signals on paper, not how voters hear it. About 9% of names, mostly rare ones, could not be scored. The place-based tests cover local races only.</p>
+      <p>Code, data and the full decision log: <a href="https://github.com/danielmstein68/foreign-names" target="_blank" rel="noopener">github.com/danielmstein68/foreign-names</a></p>
+    </div>
+  </section>
+
+</div>
